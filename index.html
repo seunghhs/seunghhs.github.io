@@ -1,541 +1,560 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Seughee Han CV">
-    <meta name="keywords" content="Seunghee Han CV">
-    <meta name="author" content="Seunghee Han">
-    
-    <title>Seunghee Han - CV</title>
-    
-    <style>
-        /* CSS 변수 정의 - 유지보수성 향상 */
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --bg-color: #f4f4f4;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
-        }
-        
-        /* 기본 스타일 리셋 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-        }
-        
-        /* 컨테이너 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 헤더 스타일 */
-        header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 1rem 0;
-            position: fixed;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seughee Han CV">
+    <meta name="keywords" content="Seunghee Han CV, Materials Informatics, MOFs, AI, KAIST">
+    <meta name="author" content="Seunghee Han">
+    
+    <title>Seunghee Han - CV (Materials Informatics)</title>
+    
+    <style>
+        /* CSS 변수 정의 - 유지보수성 향상 */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+        
+        /* 기본 스타일 리셋 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        
+        /* 컨테이너 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 헤더 스타일 */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 20px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* 메인 컨텐츠 */
+        main {
+            margin-top: 80px;
+            padding: 20px 0;
+        }
+        
+        /* 섹션 스타일 */
+        section {
+            background-color: var(--white);
+            margin: 20px 0;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        
+        /* 프로필 섹션 */
+        .profile {
+            text-align: center;
+        }
+        
+        .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 20px auto;
+        /* CV 파일에 있는 이미지로 대체하려면, 이 경로를 변경하거나 이미지를 업로드해야 합니다. */
+        background-image: url('img/profile.jpg'); 
+        background-size: cover; /* 또는 contain */
+        background-repeat: no-repeat;
+        background-position: center;
+        }
+
+        .profile-img img {
             width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+
+        .profile-img-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px auto;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        
-        nav ul li {
-            margin: 0 20px;
+
+        /* CV 파일의 이미지 사용을 위한 스타일 (img 태그를 사용하도록 변경) */
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-        
-        nav ul li a:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        /* 메인 컨텐츠 */
-        main {
-            margin-top: 80px;
-            padding: 20px 0;
-        }
-        
-        /* 섹션 스타일 */
-        section {
-            background-color: var(--white);
-            margin: 20px 0;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        h1, h2, h3 {
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            text-align: center;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
-        }
-        
-        /* 프로필 섹션 */
-        .profile {
-            text-align: center;
-        }
-        
-        .profile-img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        margin: 20px auto;
-        background-image: url('img/profile.jpg'); 
-        background-size: cover; /* 또는 contain */
-        background-repeat: no-repeat;
-        background-position: center;
-        /* display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--white);
-        font-size: 3rem; */
-        }
-        
-        /* 스킬 그리드 */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .skill-item {
-            background-color: var(--bg-color);
-            padding: 20px;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* 프로젝트 카드 */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .project-card {
-            background-color: var(--bg-color);
-            padding: 25px;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        
-        .project-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-        
-        .project-card h3 {
+
+        /* 기존 .profile-img 스타일은 삭제하거나 주석 처리하고 .profile-img-container를 사용합니다. */
+        
+        /* 스킬 그리드 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-item {
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-item h3 {
             color: var(--secondary-color);
+            font-size: 1.25rem;
+            margin-top: 0;
             margin-bottom: 10px;
         }
-        
-        /* 타임라인 스타일 */
-        .timeline {
-            position: relative;
-            padding: 20px 0;
+
+        /* Publication list style */
+        #publications ul {
+            list-style: none;
+            padding-left: 0;
         }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: var(--secondary-color);
+        #publications li {
+            margin-bottom: 15px;
+            padding-left: 1.2em;
+            text-indent: -1.2em;
         }
-        
-        .timeline-item {
-            position: relative;
-            padding: 20px;
-            width: 50%;
-            margin-bottom: 30px;
+        #publications li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.2em;
+            margin-left: -1.2em;
         }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            text-align: right;
-            padding-right: 40px;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 40px;
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            top: 25px;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -10px;
-        }
-        
-        /* 연락처 섹션 */
-        .contact-info {
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        
-        .contact-info a {
-            color: var(--secondary-color);
+        #publications a {
+            color: var(--primary-color);
             text-decoration: none;
-            margin: 0 10px;
         }
-        
-        .contact-info a:hover {
+        #publications a:hover {
             text-decoration: underline;
         }
-        
-        /* 푸터 */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-        }
-        
-        /* 반응형 디자인 */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul li {
-                margin: 5px 0;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                left: 0 !important;
-                padding-left: 60px !important;
-                padding-right: 20px !important;
-                text-align: left !important;
-            }
-            
-            .timeline-dot {
-                left: 10px !important;
-            }
-            
-            section {
-                padding: 20px;
-            }
-        }
-        
-        /* 인쇄 스타일 */
-        @media print {
-            header, footer {
-                display: none;
-            }
-            
-            main {
-                margin-top: 0;
-            }
-            
-            section {
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-        }
-    </style>
+        
+        /* 타임라인 스타일 */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 20px;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 40px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            top: 25px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+        
+        /* 연락처 섹션 */
+        .contact-info {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 푸터 */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 60px !important;
+                padding-right: 20px !important;
+                text-align: left !important;
+            }
+            
+            .timeline-dot {
+                left: 10px !important;
+            }
+            
+            section {
+                padding: 20px;
+            }
+        }
+        
+        /* 인쇄 스타일 */
+        @media print {
+            header, footer {
+                display: none;
+            }
+            
+            main {
+                margin-top: 0;
+            }
+            
+            section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap">
 </head>
 <body>
-    <!-- 헤더 네비게이션 -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">소개</a></li>
-                <li><a href="#skills">기술 스택</a></li>
-                <li><a href="#projects">프로젝트</a></li>
-                <li><a href="#experience">경력</a></li>
-                <li><a href="#education">학력</a></li>
-                <li><a href="#contact">연락처</a></li>
-            </ul>
-        </nav>
-    </header>
+        <header>
+        <nav>
+            <ul>
+                <li><a href="#about">Profile</a></li>
+                <li><a href="#research">Research Interests</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- 메인 컨텐츠 -->
-    <main>
-        <div class="container">
-            <!-- 프로필 섹션 -->
-            <section id="about" class="profile">
-                <h1>Seunghee Han (한승희)</h1>
-                <div class="profile-img"></div>
-                <h3>Computational Materials Designer</h3>
-                <p>&#x1F393; Ph.D. Student (KAIST)<br>
-                <p>&#x2709; <a href="mailto:sisifhro@kaist.ac.kr" style="color: var(--secondary-color); text-decoration: none;">sisifhro@kaist.ac.kr</a></p>
-            </section>
-
-            <!-- 기술 스택 섹션 -->
-            <section id="skills">
-                <h2>기술 스택</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <h3>하드웨어 설계</h3>
-                        <ul>
-                            <li>회로 설계 (Altium Designer, KiCad)</li>
-                            <li>PCB 레이아웃 및 최적화</li>
-                            <li>EMC/EMI 대책 설계</li>
-                            <li>전력 전자 회로 설계</li>
-                        </ul>
-                    </div>
-                    <div class="skill-item">
-                        <h3>임베디드 시스템</h3>
-                        <ul>
-                            <li>ARM Cortex-M/A 시리즈</li>
-                            <li>RTOS (FreeRTOS, Zephyr)</li>
-                            <li>C/C++ 프로그래밍</li>
-                            <li>디바이스 드라이버 개발</li>
-                        </ul>
-                    </div>
-                    <div class="skill-item">
-                        <h3>통신 프로토콜</h3>
-                        <ul>
-                            <li>CAN, RS-485, I2C, SPI</li>
-                            <li>Ethernet, TCP/IP</li>
-                            <li>Bluetooth, Wi-Fi</li>
-                            <li>Modbus, MQTT</li>
-                        </ul>
-                    </div>
-                    <div class="skill-item">
-                        <h3>시뮬레이션 및 분석</h3>
-                        <ul>
-                            <li>SPICE 시뮬레이션</li>
-                            <li>MATLAB/Simulink</li>
-                            <li>신호 처리 및 분석</li>
-                            <li>열 해석 및 최적화</li>
-                        </ul>
-                    </div>
+        <main>
+        <div class="container">
+                        <section id="about" class="profile">
+                <h1>Seunghee Han</h1>
+                <p><strong><span style="font-size: 1.5rem; color: var(--secondary-color);">Materials Informatics & Computational Chemistry</span></strong></p>
+                
+                <div class="profile-img-container">
+                    <img src="" alt="Seunghee Han Profile Picture">
                 </div>
-            </section>
 
-            <section id="publications">
-                <h2>Publication</h2>
-                <h3>Main Work</h3>
-                <ul>
-                    <li><a href="https://pubs.acs.org/doi/10.1021/jacs.4c11085" target="_blank">Harnessing Large Language Models to Collect and Analyze Metal–Organic Framework Property Data Set</a>, S. Han et al., <i>J. Am. Chem. Soc.</i>, 2025.</li>
-                    <li><a href="https://openreview.net/forum?id=VpqD4lM4jO" target="_blank">Design of new inorganic crystals with the desired composition using deep learning</a>, J. Lee, S. Han et al., <i>OpenReview</i>, 2025.</li>
-                    <li><a href="https://pubs.acs.org/doi/10.1021/acsami.4c01207" target="_blank">Multimodal Transformer for Property Prediction in Polymers</a>, S. Han et al., <i>ACS Appl. Mater. Interfaces</i>, 2024.</li>
-                    <li><a href="https://pubs.acs.org/doi/10.1021/acs.chemmater.4c02368" target="_blank">Machine learning-based prediction of proton conductivity in metal–organic frameworks</a>, S. Han et al., <i>Chem. Mater.</i>, 2024.</li>
-                    <li><a href="https://pubs.acs.org/doi/10.1021/acsomega.2c07517" target="_blank">Design and screening of metal–organic frameworks for ethane/ethylene separation</a>, S. Han et al., <i>ACS Omega</i>, 2023.</li>
-                </ul>
+                <h3>Ph.D. Candidate</h3>
+                <p>&#x1F393; Dept. of Chemical and Biomolecular Engineering, KAIST<br> 
+                <p>&#x2709; <a href="mailto:sisifhro@kaist.ac.kr" style="color: var(--secondary-color); text-decoration: none;">sisifhro@kaist.ac.kr</a> </p>
+            </section>
 
-                <h3>Cowork</h3>
+            <hr>
+
+            <section id="research">
+                <h2>Research Interests</h2>
                 <ul>
-                    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11295259/" target="_blank">Cobalt-doped ceria sensitizer effects on metal oxide nanofibers: heightened surface reactivity for high-performing chemiresistive sensors</a>, J. Kim, S. Han et al., <i>Nanomaterials</i>, 2024.</li>
-                    <li><a href="https://pubs.rsc.org/en/content/articlehtml/2024/ta/d3ta06197c" target="_blank">Moisture-triggered proton conductivity switching in metal–organic frameworks: role of coordinating solvents</a>, J. Kim, S. Han et al., <i>J. Mater. Chem. A</i>, 2024.</li>
-                    <li><a href="http://koasas.kaist.ac.kr:8080/handle/10203/301627" target="_blank">Super Proton Conductivity Through Control of Hydrogen‐Bonding Networks in Flexible Metal–Organic Frameworks</a>, N. H. Kwon, S. Han, J. Kim, E. S. Cho, <i>Small</i>, 2023.</li>
-                    <li><a href="https://pubs.acs.org/doi/10.1021/acssensors.2c02813" target="_blank">Physicochemical profiling of macrophage heterogeneity using deep learning integrated nanosensor cytometry</a>, S. Han, Y. Lee, J. Kim, S.-Y. Cho, <i>ACS Sensors</i>, 2023.</li>
+                    <li>**High-Efficiency Material Screening and Discovery:** Accelerating advanced material discovery through the integration of high-throughput virtual screening (HTVS) combined with molecular simulations, and machine learning (ML).</li>
+                    <li>**Machine Learning-Based Structure-Property Relationship Elucidation:** Exploring complex relationships between the structural characteristics and performance metrics of materials using sophisticated machine learning models, particularly Transformer models.</li>
+                    <li>**AI-Driven Novel Material and System Design:** Inverse design and synthesis of novel materials applying generative models, such as diffusion models and transformer models.</li>
+                    <li>**Data Mining and Knowledge Extraction using Large Language Models (LLMs):** Developing methodologies that leverage Large Language Models (LLMs) to automatically collect and analyze vast amounts of material properties and synthesis condition data from scientific literature.</li>
+                    <li>**Multiscale Simulation and Mechanism Interpretation:** Elucidating complex behaviors and mechanisms within MOFs, polymers, catalysts, and battery systems through density functional theory (DFT) and molecular dynamics (MD) simulations.</li>
                 </ul>
             </section>
             
-            <!-- 프로젝트 섹션 -->
-            <section id="projects">
-                <h2>주요 프로젝트</h2>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <h3>스마트 그리드 제어 시스템</h3>
-                        <p><strong>기간:</strong> 2023.01 - 2024.06</p>
-                        <p><strong>역할:</strong> 시스템 아키텍트 및 리드 엔지니어</p>
-                        <p><strong>기술:</strong> ARM Cortex-A53, Linux, MQTT, Modbus</p>
-                        <p>분산 전력 관리를 위한 실시간 제어 시스템 개발. 
-                        에너지 효율 35% 개선 및 시스템 안정성 99.9% 달성.</p>
-                    </div>
-                    <div class="project-card">
-                        <h3>산업용 IoT 센서 네트워크</h3>
-                        <p><strong>기간:</strong> 2022.03 - 2022.12</p>
-                        <p><strong>역할:</strong> 하드웨어 설계 엔지니어</p>
-                        <p><strong>기술:</strong> STM32, LoRaWAN, 저전력 설계</p>
-                        <p>공장 환경 모니터링을 위한 무선 센서 네트워크 구축. 
-                        배터리 수명 5년 이상, 1000개 노드 동시 관리.</p>
-                    </div>
-                    <div class="project-card">
-                        <h3>전기차 충전 컨트롤러</h3>
-                        <p><strong>기간:</strong> 2021.06 - 2022.02</p>
-                        <p><strong>역할:</strong> 전력전자 설계 책임자</p>
-                        <p><strong>기술:</strong> GaN FET, DSP, CAN 통신</p>
-                        <p>고효율 DC-DC 컨버터 설계 및 충전 프로토콜 구현. 
-                        충전 효율 96% 달성, 충전 시간 40% 단축.</p>
-                    </div>
-                </div>
-            </section>
+            <hr>
 
-            <!-- 경력 섹션 -->
-            <section id="experience">
-                <h2>경력 사항</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>수석 엔지니어</h3>
-                        <p><strong>ABC 전자</strong> | 2020 - 현재</p>
-                        <p>차세대 전력 시스템 개발팀 리더<br>
-                        스마트 그리드 및 신재생 에너지 통합 솔루션 개발</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>책임 연구원</h3>
-                        <p><strong>XYZ 연구소</strong> | 2015 - 2020</p>
-                        <p>임베디드 시스템 연구개발<br>
-                        산업용 IoT 플랫폼 아키텍처 설계</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>선임 엔지니어</h3>
-                        <p><strong>DEF 테크</strong> | 2010 - 2015</p>
-                        <p>전력전자 회로 설계 및 최적화<br>
-                        모터 드라이브 및 인버터 개발</p>
-                    </div>
-                </div>
-            </section>
+                        <section id="skills">
+                <h2>Skill Highlights</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h3>Molecular Simulation Tools</h3>
+                        <ul>
+                            <li>**VASP, Gaussian** </li>
+                            <li>**LAMMPS, RASPA** </li>
+                            <li>Density Functional Theory (DFT)</li>
+                            <li>Molecular Dynamics (MD)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-item">
+                        <h3>Machine Learning & AI</h3>
+                        <ul>
+                            <li>**Scikit-learn** </li>
+                            <li>**Graph Neural Networks (GNN)** </li>
+                            <li>**Diffusion, Transformer** Models </li>
+                            <li>Materials Informatics</li>
+                        </ul>
+                    </div>
+                    <div class="skill-item">
+                        <h3>Programming & Tools</h3>
+                        <ul>
+                            <li>**Python, Matlab** </li>
+                            <li>**Shell script** </li>
+                            <li>Visualization: **VESTA, VMD, OVITO** </li>
+                            <li>Material Studio, Avogadro </li>
+                        </ul>
+                    </div>
+                    <div class="skill-item">
+                        <h3>Core Research Topics</h3>
+                        <ul>
+                            <li>Metal-Organic Frameworks (MOFs)</li>
+                            <li>Polymers & Catalysts</li>
+                            <li>Proton Conductors</li>
+                            <li>Gas Separation (Ethane/Ethylene)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <!-- 학력 섹션 -->
-            <section id="education">
-                <h2>학력</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>공학박사 - 전기전자공학</h3>
-                        <p><strong>서울대학교</strong> | 2006 - 2010</p>
-                        <p>논문: 고효율 전력변환 시스템의 최적화 기법 연구</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>공학석사 - 전자공학</h3>
-                        <p><strong>KAIST</strong> | 2004 - 2006</p>
-                        <p>논문: 임베디드 시스템을 위한 실시간 운영체제 설계</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>공학사 - 전기공학</h3>
-                        <p><strong>연세대학교</strong> | 2000 - 2004</p>
-                        <p>전공 수석 졸업</p>
-                    </div>
-                </div>
-            </section>
+            <hr>
 
-            <!-- 연락처 섹션 -->
-            <section id="contact">
-                <h2>연락처</h2>
-                <div class="contact-info">
-                    <p>프로젝트 협업 및 기술 자문 환영합니다.</p>
-                    <p>
-                        <a href="mailto:hong@example.com">📧 hong@example.com</a>
-                        <a href="tel:010-1234-5678">📱 010-1234-5678</a>
-                        <a href="https://linkedin.com/in/hong" target="_blank">💼 LinkedIn</a>
-                        <a href="https://github.com/jglJGL000304" target="_blank">💻 GitHub</a>
+            <section id="publications">
+                <h2>Publications</h2>
+                <h3>Selected Works (First/Co-First/Major Contributor)</h3>
+                <ul>
+                    <li><a href="#" target="_blank">**Harnessing large language model to collect and analyze metal-organic framework property dataset**</a>, Y. Kang, W. Lee, T. Bae, **S. Han**, H. Jang, J. Kim*; *JACS, 2025.* </li>
+                    <li><a href="#" target="_blank">**Machine learning-based prediction of proton conductivity in metal–organic frameworks**</a>, **S. Han**, B.G. Lee, D.W. Lim, J. Kim*; *Chem. Mater., vol 36, 11280, 2024.* </li>
+                    <li><a href="#" target="_blank">**Multimodal Transformer for Property Prediction in Polymers**</a>, **S. Han**, Y. Kang, H. Park, J. Yi, G. Park, J. Kim*; *ACS Appl Mater Interfaces., vol 16, 16853, 2024.* </li>
+                    <li><a href="#" target="_blank">**Design of New Inorganic Crystals with the Desired Composition Using Deep Learning**</a>, **S. Han**, J. Lee, S. Han, S. Moosavi, J. Kim, C. Park*; *J. Chem. Inf. Model., vol. 63, 5755, 2023.* </li>
+                    <li><a href="#" target="_blank">**Super Proton Conductivity Through Control of Hydrogen-Bonding Networks in Flexible Metal–Organic Frameworks**</a>, **S. Han**, J. Kim, E.S. Cho*; *Small, 2301122, 2023.* </li>
+                    <li><a href="#" target="_blank">**Design and Screening of Metal–Organic Frameworks for Ethane/Ethylene Separation**</a>, **S. Han**, J. Kim*; *ACS Omega, vol. 8, 4278, 2023.* </li>
+                </ul>
+
+                <h3>Other Collaborative Publications (Co-Author)</h3>
+                <ul>
+                    <li><a href="#" target="_blank">Superhydrophilic Silica-Coated Au Nanoislands... SERS Detection of Airborne Biomarkers</a>, S. Lee, J. Park, **S. Han**, et al.; *ACS Applied Materials & Interfaces, 2025 (Accepted).* </li>
+                    <li><a href="#" target="_blank">Dual‐Strategy Direct Photocatalytic Patterning for Efficient Perovskite Nanocrystal LED Displays</a>, S. Maeng, J. Kim, T. Kim, S. Lee, **S. Han**, et al.; *Advanced Materials, e08217, 2025.* </li>
+                    <li><a href="#" target="_blank">Cobalt-doped ceria sensitizer effects on metal oxide nanofibers... for high-performing chemiresistive sensors</a>, J.W. Baek, **S. Han**, S.E. Lee, et al.; *ACS nano, vol 18, 19568, 2024.* </li>
+                    <li><a href="#" target="_blank">Moisture-triggered proton conductivity switching in metal-organic frameworks: role of coordinating solvents</a>, H. K. Lee#, Y. Oruganti#, J. Lee#, **S. Han**, et al.; *Journal of Materials Chemistry A, vol. 12, 795-801, 2023.* </li>
+                    <li><a href="#" target="_blank">Physicochemical Profiling of Macrophage Heterogeneity Using Deep Learning Integrated Nanosensor Cytometry</a>, **S. Han**, Y. Lee, J. Kim, S.Y. Cho*; *ACS Sensors, vol. 8, 1676, 2023.* </li>
+                </ul>
+            </section>
+            
+            <hr>
+
+                        <section id="experience">
+                <h2>Experiences</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3>Visiting Student</h3>
+                        <p><strong>Prof. Saad Aldin Moosavi Lab, University of Toronto (UofT), Canada</strong> | 01. 2023 ~ 02. 2023 </p>
+                        <p>Collaboration on Inorganic Crystal Design using Deep Learning.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3>Internship (Materials Informatics Lab)</h3>
+                        <p><strong>LG AI Research</strong> | 02. 2022 ~ 09. 2022 </p>
+                        <p>Contributed to AI model development for polymer property prediction and material design.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+            
+                        <section id="education">
+                <h2>Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3>Ph.D. Candidate</h3>
+                        <p><strong>Korea Advanced Institute of Science and Technology (KAIST)</strong> | Mar, 2023 - Present </p>
+                        <p>Dept. of Chemical and Biomolecular Engineering, Daejeon, Korea <br>
+                        Thesis: Design of Metal-Organic Frameworks (MOFs) Using Experimental Data-Driven Transformers <br>
+                        Advisor: Prof. Jihan Kim </p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3>M.S. (Master of Science)</h3>
+                        <p><strong>Korea Advanced Institute of Science and Technology (KAIST)</strong> | Mar, 2021 - Feb, 2023 </p>
+                        <p>Dept. of Chemical and Biomolecular Engineering, Daejeon, Korea <br>
+                        Thesis: Design and Screening of Metal Organic Frameworks for Ethane/Ethylene Separation <br>
+                        Advisor: Prof. Jihan Kim </p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3>B.S. (Bachelor of Science)</h3>
+                        <p><strong>Korea Advanced Institute of Science and Technology (KAIST)</strong> | Mar, 2017 - Feb, 2021 </p>
+                        <p>Dept. of Chemical and Biomolecular Engineering, Daejeon, Korea <br>
+                        **Summa Cum Laude** (Highest Honors) </p>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+                        <section id="contact">
+                <h2>Contact Information</h2>
+                <div class="contact-info">
+                    <p>I welcome collaborations and technical consultations.</p>
+                    <p>
+                        <a href="mailto:sisifhro@kaist.ac.kr">📧 sisifhro@kaist.ac.kr</a> 
+                        <span style="margin: 0 10px;">|</span>
+                        <span>📍 KAIST, Daejeon, Republic of Korea </span>
+                    </p>
+                    <p style="margin-top: 10px;">
+                        <a href="https://github.com/seunghhs" target="_blank">💻 seunghhs.github.io</a> 
                     </p>
-                </div>
-            </section>
-        </div>
-    </main>
+                </div>
+            </section>
+        </div>
+    </main>
 
-    <!-- 푸터 -->
-    <footer>
-        <p>&copy; 2025 Seunghee Han. All rights reserved. | Powered by GitHub Pages</p>
-    </footer>
+        <footer>
+        <p>&copy; 2025 Seunghee Han. All rights reserved. | Powered by GitHub Pages</p>
+    </footer>
 
-    <!-- JavaScript -->
-    <script>
-        // 부드러운 스크롤 구현
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        <script>
+        // 부드러운 스크롤 구현
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-        // 스크롤 시 헤더 스타일 변경
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
-            } else {
-                header.style.backgroundColor = 'var(--primary-color)';
-            }
-        });
+        // 스크롤 시 헤더 스타일 변경
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
+            } else {
+                header.style.backgroundColor = 'var(--primary-color)';
+            }
+        });
 
-        // 페이지 로드 시 애니메이션
-        window.addEventListener('load', function() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach((section, index) => {
-                setTimeout(() => {
-                    section.style.opacity = '0';
-                    section.style.transform = 'translateY(20px)';
-                    section.style.transition = 'all 0.5s ease';
-                    
-                    setTimeout(() => {
-                        section.style.opacity = '1';
-                        section.style.transform = 'translateY(0)';
-                    }, 100);
-                }, index * 100);
-            });
-        });
-    </script>
+        // 페이지 로드 시 애니메이션
+        window.addEventListener('load', function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(20px)';
+                    section.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+    </script>
 </body>
 </html>
