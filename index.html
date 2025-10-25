@@ -965,9 +965,11 @@
          * #contact 섹션 내부의 모든 <a> 태그(하이퍼링크)에서
          * 밑줄을 제거합니다. 
         */
-        #contact a {
-            text-decoration: none;
-        }
+        #contact a,
+        #contact a:link,
+        #contact a:visited {
+            text-decoration: none !important;
+        }
 
         /*          * [수정 2]
          * <a>가 아닌 .contact-link-text 클래스를 가진 <span> 태그의
@@ -1185,7 +1187,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="nav-logo">HSHa</div>
+            <div class="nav-logo">HSH</div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 
