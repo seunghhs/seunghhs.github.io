@@ -184,6 +184,72 @@
             align-items: center;
         }
 
+
+        .dropdown {
+            position: relative; /* 서브메뉴의 기준점이 됨 */
+        }
+        
+        .dropdown-menu {
+            display: none; /* 평소에는 숨김 */
+            position: absolute; /* 메인 메뉴 위에 뜸 */
+            top: 100%; /* "Research" 링크 바로 아래에 위치 */
+            left: 0;
+            background: var(--bg-primary);
+            box-shadow: var(--shadow-md);
+            border-radius: 10px;
+            padding: 0.5rem 0;
+            list-style: none;
+            z-index: 1100; /* 다른 요소보다 위에 오도록 */
+            min-width: 200px; /* 서브메뉴 최소 너비 */
+            border: 1px solid var(--border-color);
+        }
+        
+        /* 메인 메뉴(dropdown)에 마우스 올렸을 때 서브메뉴(dropdown-menu) 표시 */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            padding: 0.75rem 1.5rem; /* 서브메뉴 아이템 간격 */
+            display: block; /* 링크 영역을 블록으로 만듦 */
+            white-space: nowrap; /* "Presentations" 같은 긴 단어 줄바꿈 방지 */
+        }
+        
+        
+        .dropdown-menu a::after {
+            display: none;
+        }
+        
+        
+        .dropdown-menu a:hover {
+            background-color: var(--bg-secondary);
+            color: var(--pastel-green-dark);
+        }
+        
+        
+        @media (max-width: 768px) {
+            .dropdown {
+                width: 100%; /* 모바일에서 꽉 차게 */
+            }
+            
+            .dropdown-menu {
+                position: static; /* 모바일에서는 띄우지 않고 제자리에 */
+                display: block; /* 모바일에서는 항상 보이도록 */
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                padding-left: 1.5rem; /* 서브메뉴 들여쓰기 */
+                min-width: auto;
+                border-radius: 0;
+            }
+        
+            .dropdown-menu a {
+                padding: 0.5rem 1rem; /* 모바일용 패딩 */
+            }
+        }
+        
+        
+                
         .theme-toggle {
             background: transparent;
             border: 2px solid var(--border-color);
@@ -1093,19 +1159,22 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="nav-logo">SH</div>
+            <div class="nav-logo">HSH</div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#metrics" class="nav-link">Research</a></li>
+                
+                <li class="dropdown">
+                    <a href="#metrics" class="nav-link">Research ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#publications" class="nav-link">Publications</a></li>
+                        <li><a href="#presentations" class="nav-link">Presentations</a></li>
+                        <li><a href="#awards" class="nav-link">Awards</a></li>
+                        <li><a href="#experience" class="nav-link">Experience</a></li>
+                        <li><a href="#patents" class="nav-link">Patents</a></li>
+                    </ul>
+                </li>
                 <li><a href="#timeline" class="nav-link">Academic Journey</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#publications" class="nav-link">Publications</a></li>
-<!--
-                <li><a href="#presentations" class="nav-link">Presentations</a></li>
-                <li><a href="#awards" class="nav-link">Awards</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#patents" class="nav-link">Patents</a></li> 
--->
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -1173,11 +1242,11 @@
                         <div class="metric-label">Experience</div>
                     </div>
                 </a>
-                <a href="#patent" class="metric-link-wrapper">
+                <a href="#patents" class="metric-link-wrapper">
                     <div class="metric-card">
                         <div class="metric-icon">💡</div>
                         <div class="metric-value" data-count="1">0</div>
-                        <div class="metric-label">Patent</div>
+                        <div class="metric-label">Patents</div>
                     </div>
                 </a>
             </div>
@@ -1581,7 +1650,7 @@
             </p>
     
             <div class="publication-card" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="publication-title">1. Patent Title Goes Here</h3>
+                <h3 class="publication-title">1. Patents Title Goes Here</h3>
                 <p class="publication-authors">Inventors: S. Han, J. Kim*</p>
                 <p class="publication-journal">Application Number / Status (e.g., KR-10-2025-XXXXXXX, Filed)</p>
             </div>
@@ -1863,24 +1932,37 @@
         // Active Navigation Link
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
-
+        
+        // ▼▼▼ 이 함수를 통째로 교체하세요 ▼▼▼
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (pageYOffset >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
             });
-
+        
+            // (추가) Research 하위 섹션 ID 목록
+            const researchSubSections = ['publications', 'presentations', 'awards', 'experience', 'patents'];
+        
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
+                const linkHref = link.getAttribute('href').slice(1);
+        
+                // 1. 현재 섹션과 링크가 일치하면 활성화
+                if (linkHref === current) {
+                    link.classList.add('active');
+                }
+                
+                // 2. (추가) 현재 섹션이 Research 하위 섹션 중 하나라면,
+                //    메인 "Research" 링크(href="#metrics")에도 active 클래스 추가
+                if (linkHref === 'metrics' && researchSubSections.includes(current)) {
                     link.classList.add('active');
                 }
             });
         });
+        // ▲▲▲ 여기까지 교체 ▲▲▲
 
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
