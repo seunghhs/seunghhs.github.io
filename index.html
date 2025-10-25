@@ -444,6 +444,11 @@
             margin-top: 0.5rem;
         }
 
+        .metric-link-wrapper {
+            text-decoration: none; /* 링크 밑줄 제거 */
+            color: inherit;        /* 부모 요소의 글자색 상속 */
+        }
+        
         /* Chart Container */
         .charts-container {
             display: grid;
@@ -1140,31 +1145,41 @@
             </p>
 
             <div class="metrics-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="metric-card">
-                    <div class="metric-icon">📝</div>
-                    <div class="metric-value" data-count="13">0</div>
-                    <div class="metric-label">Publications</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-icon">🎤</div>
-                    <div class="metric-value" data-count="10">0</div>
-                    <div class="metric-label">Presentations</div>
-                </div>                
-                <div class="metric-card">
-                    <div class="metric-icon">🏆</div>
-                    <div class="metric-value" data-count="2">0</div>
-                    <div class="metric-label">Awards</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-icon">💼</div>
-                    <div class="metric-value" data-count="2">0</div>
-                    <div class="metric-label">Experience</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-icon">💡</div>
-                    <div class="metric-value" data-count="1">0</div>
-                    <div class="metric-label">Patents</div>
-                </div>               
+                <a href="#publications" class="metric-link-wrapper">
+                    <div class="metric-card">
+                        <div class="metric-icon">📝</div>
+                        <div class="metric-value" data-count="13">0</div>
+                        <div class="metric-label">Publications</div>
+                    </div>
+                </a>
+                <a href="#presentations" class="metric-link-wrapper">
+                    <div class="metric-card">
+                        <div class="metric-icon">🎤</div>
+                        <div class="metric-value" data-count="10">0</div>
+                        <div class="metric-label">Presentations</div>
+                    </div>
+                </a>
+                <a href="#awards" class="metric-link-wrapper">
+                    <div class="metric-card">
+                        <div class="metric-icon">🏆</div>
+                        <div class="metric-value" data-count="2">0</div>
+                        <div class="metric-label">Awards</div>
+                    </div>
+                </a>
+                <a href="#experience" class="metric-link-wrapper">
+                    <div class="metric-card">
+                        <div class="metric-icon">💼</div>
+                        <div class="metric-value" data-count="2">0</div>
+                        <div class="metric-label">Experience</div>
+                    </div>
+                </a>
+                <a href="#patent" class="metric-link-wrapper">
+                    <div class="metric-card">
+                        <div class="metric-icon">💡</div>
+                        <div class="metric-value" data-count="1">0</div>
+                        <div class="metric-label">Patent</div>
+                    </div>
+                </a>
             </div>
 
             <div class="charts-container" data-aos="fade-up" data-aos-delay="300">
