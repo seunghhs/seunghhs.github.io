@@ -956,17 +956,27 @@
             color: var(--text-secondary);
         }
 
-        .contact-link {
-            color: var(--text-primary);
+
+
+        
+        .contact-link-wrapper {
+                    display: block; /* <a> 태그가 div처럼 동작하도록 */
+                    text-decoration: none;
+                    color: inherit; /* 부모 텍스트 색상 상속 */
+                }
+
+        /* 링크처럼 보였던 텍스트의 스타일 */
+        .contact-link-text {
+            color: var(--text-primary);
+            font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
+            transition: text-decoration 0.3s ease;
+        }
 
-        .contact-link:hover {
-            text-decoration: underline;
-        }
-
+        /* 카드에 마우스 올리면 텍스트에 밑줄 */
+        .contact-link-wrapper:hover .contact-link-text {
+            text-decoration: underline;
+        }
         .cv-download {
             margin-top: 2rem;
         }
@@ -1762,7 +1772,7 @@
                         <div class="publication-header compact">
                             <div>
                                 <h3 class="publication-title">1. Method and Apparatus for estimating physical properties of polymers (폴리머의 물성을 추정하는 방법 및 장치)</h3>
-                                <p class="publication-authors">발명자: 박근영, 정상용, 이지성, 김은지, 김지한, 한승희, 강영훈</p>
+                                <p class="publication-authors">발명자: 박근영, 정상용, 이지성, 김은지, 김지한, <strong>한승희</strong>, 강영훈</p>
                                 <p class="publication-journal">대한민국, 출원번호: 10-2023-0173435 (출원일: 2023.12.04)</p>
                             </div>
                         </div>
@@ -1910,69 +1920,78 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+
+    <!--  Contact -->
+
     <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                Let's collaborate on advancing materials science through AI
-            </p>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Let's collaborate on advancing materials science through AI
+            </p>
 
-            <div class="contact-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h3 class="contact-title">Email</h3>
-                    <p class="contact-info">
-                        <a href="mailto:sisifhro@kaist.ac.kr" class="contact-link">
-                            sisifhro@kaist.ac.kr
-                        </a>
-                    </p>
-                </div>
+            <div class="contact-grid" data-aos="fade-up" data-aos-delay="200">
+                
+            <!-- Email Card -->
+            <a href="mailto:sisifhro@kaist.ac.kr" class="contact-card contact-link-wrapper">
+                    <div class="contact-icon">📧</div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-info">
+                        <span class="contact-link-text">
+                            sisifhro@kaist.ac.kr
+                        </span>
+                    </p>
+                </a>
 
-                <div class="contact-card">
-                    <div class="contact-icon">🔬</div>
-                    <h3 class="contact-title">Research Group</h3>
-                    <p class="contact-info">
-                        Prof. Jihan Kim Group
-                        <a href="https://molsim.kaist.ac.kr" target="_blank" class="contact-link">
-                            Molecular Simulation Group<br>
-                        </a>
-                    </p>
-                </div>
+            <!-- Research Group Card -->
+                <a href="https://molsim.kaist.ac.kr" target="_blank" class="contact-card contact-link-wrapper">
+                    <div class="contact-icon">🔬</div>
+                    <h3 class="contact-title">Research Group</h3>
+                    <p class="contact-info">
+                        Prof. Jihan Kim Group<br>
+                        <span class="contact-link-text">
+                            Molecular Simulation Group
+                        </span>
+                    </p>
+                </a>
 
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <img src="img/github_img.png" alt="GitHub" style="width: 30px; height: 30px;">
-                    </div>
-                    <h3 class="contact-title">GitHub</h3>
-                    <p class="contact-info">
-                        <a href="https://github.com/seunghhs" class="contact-link" target="_blank">
-                            github.com/seunghhs
-                        </a>
-                    </p>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <img src="img/linkedin_img.png" alt="LinkedIn" style="width: 30px; height: 30px;">
-                    </div>
-                    <h3 class="contact-title">LinkedIn</h3>
-                    <p class="contact-info">
-                        <a href="https://www.linkedin.com/in/seunghee-han-145687300/" class="contact-link" target="_blank">
-                            linkedin.com/in/seunghee-han-145687300
-                        </a>
-                    </p>
-                </div>
+            <!-- GitHub Card -->
+                <a href="https://github.com/seunghhs" target="_blank" class="contact-card contact-link-wrapper">
+                    <div class="contact-icon">
+                        <img src="img/github_img.png" alt="GitHub" style="width: 30px; height: 30px;" 
+                             onerror="this.src='https://placehold.co/30x30/e2e8f0/1e293b?text=GH'">
+                    </div>
+                    <h3 class="contact-title">GitHub</h3>
+                    <p class="contact-info">
+                        <span class="contact-link-text">
+                            github.com/seunghhs
+                        </span>
+                    </p>
+                </a>
+                
+            <!-- LinkedIn Card -->
+                <a href="https://www.linkedin.com/in/seunghee-han-145687300/" target="_blank" class="contact-card contact-link-wrapper">
+                    <div class="contact-icon">
+                        <img src="img/linkedin_img.png" alt="LinkedIn" style="width: 30px; height: 30px;"
+                             onerror="this.src='https://placehold.co/30x30/e2e8f0/1e293b?text=LI'">
+                    </div>
+                    <h3 class="contact-title">LinkedIn</h3>
+                    <p class="contact-info">
+                        <span class="contact-link-text">
+                            linkedin.com/in/seunghee-han
+                        </span>
+                    </p>
+                </a>
 
-            </div>
+      	    </div>
 
-            <div class="cv-download" data-aos="fade-up" data-aos-delay="300">
-                <a href="CV_SeungheeHan.pdf" download class="cv-btn">
-                    📄 Download CV
-                </a>
-            </div>
-        </div>
-    </section>
+            <div class="cv-download" data-aos="fade-up" data-aos-delay="300">
+                <a href="CV_SeungheeHan.pdf" download class="cv-btn">
+                    📄 Download CV
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
