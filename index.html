@@ -955,20 +955,40 @@
             font-weight: 600;
         }
 
-        .contact-info {
-            color: var(--text-secondary);
-        }
+
+        .contact-info {
+            color: var(--text-secondary);
+        }
 
 
+        /*          * [수정 1]
+         * #contact 섹션 내부의 모든 <a> 태그(하이퍼링크)에서
+         * 밑줄을 제거합니다. 
+        */
+        #contact a {
+            text-decoration: none;
+        }
 
-        
-
-        a.contact-link-text {
+        /*          * [수정 2]
+         * <a>가 아닌 .contact-link-text 클래스를 가진 <span> 태그의
+         * 텍스트 스타일을 지정합니다. (선택자가 a. 에서 . 으로 변경됨)
+        */
+        .contact-link-text {
             color: var(--text-primary)!important;
             font-weight: 600;
-            text-decoration: none!important; /* 평소에는 밑줄 없음 */
             transition: text-decoration 0.3s ease;
         }
+
+        /*          * (선택 사항) 마우스를 올렸을 때만 밑줄을 표시하려면
+         * 이 규칙을 추가하세요.
+        */
+        #contact a:hover .contact-link-text {
+            text-decoration: underline;
+        }
+
+
+        
+
 
 
 
