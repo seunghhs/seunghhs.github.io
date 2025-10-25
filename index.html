@@ -558,7 +558,80 @@
             margin-top: 0.5rem;
             font-weight: 600;
         }
-
+        
+        #timeline .timeline-item:nth-child(even) {
+            flex-direction: row; /* reset */
+        }
+        
+        /* 명시적 좌/우 배치 */
+        #timeline .timeline-item.left {
+            flex-direction: row;           /* 카드가 왼쪽, spacer가 오른쪽 */
+        }
+        #timeline .timeline-item.right {
+            flex-direction: row-reverse;   /* 카드가 오른쪽, spacer가 왼쪽 */
+        }
+        
+        /* 카드 가로를 넓게, 세로는 납작하게 */
+        #timeline .timeline-item {
+            margin-bottom: 2.4rem; /* 기존 4rem → compact */
+        }
+        #timeline .timeline-content {
+            width: 52%;              /* 기존 45% → 한 줄로 더 잘 들어가게 넓힘 */
+            padding: 1rem 1.25rem;   /* 세로 패딩 축소 */
+            border-radius: 16px;     /* 살짝 각만 줄임 */
+        }
+        #timeline .timeline-spacer {
+            width: 36%;              /* 나머지 여유폭 */
+        }
+        
+        /* 날짜 왼쪽에 배지 붙이기 (🎓/🏆/💼) */
+        #timeline .timeline-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--pastel-green-dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        #timeline .badge-inline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--pastel-blue);
+            font-size: 0.85rem;
+        }
+        
+        /* 텍스트 더 컴팩트하게 */
+        #timeline .timeline-title {
+            font-size: 1.05rem;  /* 기존 1.3rem → 1.05rem */
+            line-height: 1.3;
+            margin-bottom: 0.35rem;
+        }
+        #timeline .timeline-description {
+            font-size: 0.95rem;
+            line-height: 1.45;   /* 기존 1.6 → 1.45 */
+        }
+        
+        /* 중앙 점 소형화 */
+        #timeline .timeline-dot {
+            width: 16px;   /* 기존 20px → 16px */
+            height: 16px;
+        }
+        
+        /* 모바일: 한 열 배치 */
+        @media (max-width: 768px) {
+            #timeline .timeline-content,
+            #timeline .timeline-spacer {
+                width: 100%;
+            }
+            #timeline .timeline-item {
+                margin-bottom: 1.6rem;
+            }
+        }
+        
         /* Research Projects Section */
         .projects-section {
             background: var(--bg-secondary);
@@ -1183,9 +1256,9 @@
             <div class="timeline-container">
                 <div class="timeline-line"></div>
 
-                <!-- LEFT: Ph.D. -->
-                <div class="timeline-item">
-                    <div class="timeline-content" data-aos="fade-right">
+               <!-- LEFT: Ph.D. -->
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
                         <div class="timeline-date">
                             <span class="badge-inline">🎓</span> 2023 – Present
                         </div>
@@ -1200,10 +1273,10 @@
                 </div>
     
                 <!-- RIGHT: KIChE Poster Award -->
-                <div class="timeline-item right">
+                <div class="timeline-item right" data-aos="fade-left">
                     <div class="timeline-spacer"></div>
                     <div class="timeline-dot"></div>
-                    <div class="timeline-content" data-aos="fade-left">
+                    <div class="timeline-content">
                         <div class="timeline-date">
                             <span class="badge-inline">🏆</span> 2023
                         </div>
@@ -1217,8 +1290,8 @@
                 </div>
     
                 <!-- LEFT: M.S. -->
-                <div class="timeline-item">
-                    <div class="timeline-content" data-aos="fade-right">
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
                         <div class="timeline-date">
                             <span class="badge-inline">🎓</span> 2021 – 2023
                         </div>
@@ -1233,10 +1306,10 @@
                 </div>
     
                 <!-- RIGHT: Visiting Student @ UofT -->
-                <div class="timeline-item right">
+                <div class="timeline-item right" data-aos="fade-left">
                     <div class="timeline-spacer"></div>
                     <div class="timeline-dot"></div>
-                    <div class="timeline-content" data-aos="fade-left">
+                    <div class="timeline-content">
                         <div class="timeline-date">
                             <span class="badge-inline">💼</span> 01. 2023 ~ 02. 2023
                         </div>
@@ -1248,8 +1321,8 @@
                 </div>
     
                 <!-- LEFT: B.S. -->
-                <div class="timeline-item">
-                    <div class="timeline-content" data-aos="fade-right">
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
                         <div class="timeline-date">
                             <span class="badge-inline">🎓</span> 2017 – 2021
                         </div>
@@ -1263,10 +1336,10 @@
                 </div>
     
                 <!-- RIGHT: Internship @ LG AI Research -->
-                <div class="timeline-item right">
+                <div class="timeline-item right" data-aos="fade-left">
                     <div class="timeline-spacer"></div>
                     <div class="timeline-dot"></div>
-                    <div class="timeline-content" data-aos="fade-left">
+                    <div class="timeline-content">
                         <div class="timeline-date">
                             <span class="badge-inline">💼</span> 02. 2022 ~ 09. 2022
                         </div>
@@ -1277,11 +1350,11 @@
                     </div>
                 </div>
     
-                <!-- RIGHT (강제): Summa Cum Laude -->
-                <div class="timeline-item right">
+                <!-- RIGHT: Summa Cum Laude -->
+                <div class="timeline-item right" data-aos="fade-left">
                     <div class="timeline-spacer"></div>
                     <div class="timeline-dot"></div>
-                    <div class="timeline-content" data-aos="fade-left">
+                    <div class="timeline-content">
                         <div class="timeline-date">
                             <span class="badge-inline">🏆</span> 2021
                         </div>
