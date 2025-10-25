@@ -3,25 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Seughee Han CV">
-    <meta name="keywords" content="Seunghee Han CV, Materials Informatics, MOFs, AI, KAIST">
+    <meta name="description" content="Seunghee Han | PhD Candidate in Materials Informatics & Computational Chemistry at KAIST">
+    <meta name="keywords" content="Seunghee Han, KAIST, Materials Informatics, MOFs, AI, Computational Chemistry, Transformer Models, LLMs">
     <meta name="author" content="Seunghee Han">
     
-    <title>Seunghee Han - CV (Materials Informatics)</title>
+    <title>Seunghee Han | Materials Informatics - KAIST</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS 변수 정의 - 유지보수성 향상 */
+        /* CSS Variables: Pastel Color Palette */
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --bg-color: #f4f4f4;
-            --white: #ffffff;
+            --bg-white: #ffffff;
+            --bg-light: #fafbfc;
+            --text-primary: #2c3e50;
+            --text-secondary: #5a6c7d;
+            --text-light: #94a3b8;
+            
+            /* Pastel Project Colors */
+            --pastel-green: #a8e6cf;
+            --pastel-green-dark: #7fcdbb;
+            --pastel-pink: #ffd3d3;
+            --pastel-pink-dark: #ffb6b6;
+            --pastel-blue: #c7e9ff;
+            --pastel-blue-dark: #a6d8f4;
+            --pastel-purple: #e0c3fc;
+            --pastel-yellow: #fff3b8;
+            
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.08);
+            
             --transition: all 0.3s ease;
         }
         
-        /* 기본 스타일 리셋 */
         * {
             margin: 0;
             padding: 0;
@@ -29,100 +45,214 @@
         }
         
         body {
-            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+            overflow-x: hidden;
         }
         
-        /* 컨테이너 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 헤더 스타일 */
+        /* Header */
         header {
-            background-color: var(--primary-color);
-            color: var(--white);
+            background-color: var(--bg-white);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-sm);
         }
         
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        nav a:hover {
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-green) 50%, var(--pastel-pink) 100%);
+            position: relative;
+            padding-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem; /* 간격 줄임 */
+            color: var(--text-primary);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem; /* 간격 늘림 */
+            font-weight: 500;
+        }
+        
+        .keywords {
+            display: flex;
             flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
         }
         
-        nav ul li {
-            margin: 0 20px;
+        .keyword {
+            background: var(--bg-white);
+            color: var(--text-secondary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+            font-weight: 500;
         }
         
-        nav ul li a {
-            color: var(--white);
+        .keyword:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .hero-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
             text-decoration: none;
             transition: var(--transition);
-            padding: 5px 10px;
-            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
-        nav ul li a:hover {
-            background-color: var(--secondary-color);
+        .btn-primary {
+            background: var(--text-primary);
+            color: white;
         }
         
-        /* 메인 컨텐츠 */
-        main {
-            margin-top: 80px;
-            padding: 20px 0;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
         
-        /* 섹션 스타일 */
+        .btn-secondary {
+            background: var(--bg-white);
+            color: var(--text-primary);
+            border: 2px solid var(--border-light);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--bg-light);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Styles */
         section {
-            background-color: var(--white);
-            margin: 20px 0;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 5rem 0;
         }
         
-        h1, h2, h3 {
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-        
-        h1 {
+        .section-title {
             font-size: 2.5rem;
             text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            font-weight: 700;
         }
         
-        h2 {
-            font-size: 2rem;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
+        /* About Section (Research Interests) */
+        .about {
+            background: var(--bg-light);
+            padding-top: 2rem;
         }
         
-        /* 프로필 섹션 */
-        .profile {
-            text-align: center;
+        .about-content {
+            /* flex-direction: column-reverse; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
         }
+
+        .about-text {
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .about-text h4 {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
         
         .profile-img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        margin: 20px auto;
-        /* CV 파일에 있는 이미지로 대체하려면, 이 경로를 변경하거나 이미지를 업로드해야 합니다. */
-        background-image: url('img/profile.jpg'); 
-        background-size: cover; /* 또는 contain */
-        background-repeat: no-repeat;
-        background-position: center;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            box-shadow: var(--shadow-lg);
+            margin: 2rem auto;
         }
 
         .profile-img img {
@@ -131,391 +261,430 @@
             object-fit: cover;
             border-radius: 50%;
         }
+        
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .education-timeline {
+            /* Education section for timeline */
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-white);
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+        }
 
-        .profile-img-container {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 20px auto;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        .education-timeline h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .timeline-item {
+            padding: 0.8rem 0;
+            border-left: 3px solid var(--pastel-blue);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+            font-size: 1.1rem;
         }
 
-        /* CV 파일의 이미지 사용을 위한 스타일 (img 태그를 사용하도록 변경) */
-        .profile-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .timeline-item em {
+            color: var(--text-secondary);
+            font-style: normal;
+            display: block;
+            font-size: 0.95rem;
         }
 
-        /* 기존 .profile-img 스타일은 삭제하거나 주석 처리하고 .profile-img-container를 사용합니다. */
-        
-        /* 스킬 그리드 */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .skill-item {
-            background-color: var(--bg-color);
-            padding: 20px;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+        .timeline-item p {
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            color: var(--text-secondary);
+        }
 
-        .skill-item h3 {
-            color: var(--secondary-color);
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--pastel-green);
+        }
+
+        .skill-card h3 {
+            color: var(--text-primary);
             font-size: 1.25rem;
-            margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        /* Publication list style */
-        #publications ul {
+        .skill-card ul {
             list-style: none;
             padding-left: 0;
         }
-        #publications li {
-            margin-bottom: 15px;
+
+        .skill-card li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
             padding-left: 1.2em;
             text-indent: -1.2em;
         }
-        #publications li::before {
+
+        .skill-card li::before {
             content: "•";
-            color: var(--accent-color);
+            color: var(--pastel-blue);
             font-weight: bold;
             display: inline-block;
             width: 1.2em;
             margin-left: -1.2em;
         }
-        #publications a {
-            color: var(--primary-color);
-            text-decoration: none;
+
+        /* Publications */
+        .publications {
+            background: var(--bg-light);
+        }
+
+        .publications h3 {
+            font-size: 1.75rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 10px;
         }
-        #publications a:hover {
-            text-decoration: underline;
+
+        .publication-item {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--pastel-green);
+        }
+
+        .publication-item.collaborative {
+            border-left: 4px solid var(--pastel-pink);
         }
-        
-        /* 타임라인 스타일 */
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: var(--secondary-color);
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding: 20px;
-            width: 50%;
-            margin-bottom: 30px;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            text-align: right;
-            padding-right: 40px;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 40px;
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            top: 25px;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -10px;
-        }
-        
-        /* 연락처 섹션 */
-        .contact-info {
-            text-align: center;
+
+        .publication-item h4 {
             font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
         }
         
-        .contact-info a {
-            color: var(--secondary-color);
+        .journal-info {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .doi-link {
+            color: var(--text-primary);
             text-decoration: none;
-            margin: 0 10px;
+            font-weight: 500;
         }
         
-        .contact-info a:hover {
+        .doi-link:hover {
             text-decoration: underline;
+            color: var(--text-secondary);
         }
         
-        /* 푸터 */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
+        /* Contact */
+        .contact {
             text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
+            padding: 4rem 0;
         }
         
-        /* 반응형 디자인 */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--bg-light);
+            border-radius: 25px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+            border: 1px solid var(--border-light);
+        }
+        
+        .contact-link:hover {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-light);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
                 text-align: center;
             }
             
-            nav ul li {
-                margin: 5px 0;
+            .profile-img {
+                margin: 0 auto;
             }
             
-            .timeline::before {
-                left: 20px;
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
             
-            .timeline-item {
-                width: 100%;
-                left: 0 !important;
-                padding-left: 60px !important;
-                padding-right: 20px !important;
-                text-align: left !important;
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .timeline-dot {
-                left: 10px !important;
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
             }
-            
-            section {
-                padding: 20px;
-            }
+            
+            .about-text {
+                text-align: center;
+            }
         }
-        
-        /* 인쇄 스타일 */
-        @media print {
-            header, footer {
-                display: none;
-            }
-            
-            main {
-                margin-top: 0;
-            }
-            
-            section {
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
+
+        /* Animation Keyframes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
     </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap">
 </head>
 <body>
         <header>
         <nav>
             <ul>
-                <li><a href="#about">Profile</a></li>
-                <li><a href="#research">Research Interests</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#publications">Publications</a></li>
-                <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-        <main>
-        <div class="container">
-                        <section id="about" class="profile">
-                <h1>Seunghee Han</h1>
-                <p><strong><span style="font-size: 1.5rem; color: var(--secondary-color);">Materials Informatics & Computational Chemistry</span></strong></p>
-                
-                <div class="profile-img-container">
-                    <img src="" alt="Seunghee Han Profile Picture">
-                </div>
-
-                <h3>Ph.D. Candidate</h3>
-                <p>&#x1F393; Dept. of Chemical and Biomolecular Engineering, KAIST<br> 
-                <p>&#x2709; <a href="mailto:sisifhro@kaist.ac.kr" style="color: var(--secondary-color); text-decoration: none;">sisifhro@kaist.ac.kr</a> </p>
-            </section>
-
-            <hr>
-
-            <section id="research">
-                <h2>Research Interests</h2>
-                <ul>
-                    <li>**High-Efficiency Material Screening and Discovery:** Accelerating advanced material discovery through the integration of high-throughput virtual screening (HTVS) combined with molecular simulations, and machine learning (ML).</li>
-                    <li>**Machine Learning-Based Structure-Property Relationship Elucidation:** Exploring complex relationships between the structural characteristics and performance metrics of materials using sophisticated machine learning models, particularly Transformer models.</li>
-                    <li>**AI-Driven Novel Material and System Design:** Inverse design and synthesis of novel materials applying generative models, such as diffusion models and transformer models.</li>
-                    <li>**Data Mining and Knowledge Extraction using Large Language Models (LLMs):** Developing methodologies that leverage Large Language Models (LLMs) to automatically collect and analyze vast amounts of material properties and synthesis condition data from scientific literature.</li>
-                    <li>**Multiscale Simulation and Mechanism Interpretation:** Elucidating complex behaviors and mechanisms within MOFs, polymers, catalysts, and battery systems through density functional theory (DFT) and molecular dynamics (MD) simulations.</li>
-                </ul>
-            </section>
-            
-            <hr>
-
-                        <section id="skills">
-                <h2>Skill Highlights</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <h3>Molecular Simulation Tools</h3>
-                        <ul>
-                            <li>**VASP, Gaussian** </li>
-                            <li>**LAMMPS, RASPA** </li>
-                            <li>Density Functional Theory (DFT)</li>
-                            <li>Molecular Dynamics (MD)</li>
-                        </ul>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Machine Learning & AI</h3>
-                        <ul>
-                            <li>**Scikit-learn** </li>
-                            <li>**Graph Neural Networks (GNN)** </li>
-                            <li>**Diffusion, Transformer** Models </li>
-                            <li>Materials Informatics</li>
-                        </ul>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Programming & Tools</h3>
-                        <ul>
-                            <li>**Python, Matlab** </li>
-                            <li>**Shell script** </li>
-                            <li>Visualization: **VESTA, VMD, OVITO** </li>
-                            <li>Material Studio, Avogadro </li>
-                        </ul>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Core Research Topics</h3>
-                        <ul>
-                            <li>Metal-Organic Frameworks (MOFs)</li>
-                            <li>Polymers & Catalysts</li>
-                            <li>Proton Conductors</li>
-                            <li>Gas Separation (Ethane/Ethylene)</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <hr>
-
-            <section id="publications">
-                <h2>Publications</h2>
-                <h3>Selected Works (First/Co-First/Major Contributor)</h3>
-                <ul>
-                    <li><a href="#" target="_blank">**Harnessing large language model to collect and analyze metal-organic framework property dataset**</a>, Y. Kang, W. Lee, T. Bae, **S. Han**, H. Jang, J. Kim*; *JACS, 2025.* </li>
-                    <li><a href="#" target="_blank">**Machine learning-based prediction of proton conductivity in metal–organic frameworks**</a>, **S. Han**, B.G. Lee, D.W. Lim, J. Kim*; *Chem. Mater., vol 36, 11280, 2024.* </li>
-                    <li><a href="#" target="_blank">**Multimodal Transformer for Property Prediction in Polymers**</a>, **S. Han**, Y. Kang, H. Park, J. Yi, G. Park, J. Kim*; *ACS Appl Mater Interfaces., vol 16, 16853, 2024.* </li>
-                    <li><a href="#" target="_blank">**Design of New Inorganic Crystals with the Desired Composition Using Deep Learning**</a>, **S. Han**, J. Lee, S. Han, S. Moosavi, J. Kim, C. Park*; *J. Chem. Inf. Model., vol. 63, 5755, 2023.* </li>
-                    <li><a href="#" target="_blank">**Super Proton Conductivity Through Control of Hydrogen-Bonding Networks in Flexible Metal–Organic Frameworks**</a>, **S. Han**, J. Kim, E.S. Cho*; *Small, 2301122, 2023.* </li>
-                    <li><a href="#" target="_blank">**Design and Screening of Metal–Organic Frameworks for Ethane/Ethylene Separation**</a>, **S. Han**, J. Kim*; *ACS Omega, vol. 8, 4278, 2023.* </li>
-                </ul>
-
-                <h3>Other Collaborative Publications (Co-Author)</h3>
-                <ul>
-                    <li><a href="#" target="_blank">Superhydrophilic Silica-Coated Au Nanoislands... SERS Detection of Airborne Biomarkers</a>, S. Lee, J. Park, **S. Han**, et al.; *ACS Applied Materials & Interfaces, 2025 (Accepted).* </li>
-                    <li><a href="#" target="_blank">Dual‐Strategy Direct Photocatalytic Patterning for Efficient Perovskite Nanocrystal LED Displays</a>, S. Maeng, J. Kim, T. Kim, S. Lee, **S. Han**, et al.; *Advanced Materials, e08217, 2025.* </li>
-                    <li><a href="#" target="_blank">Cobalt-doped ceria sensitizer effects on metal oxide nanofibers... for high-performing chemiresistive sensors</a>, J.W. Baek, **S. Han**, S.E. Lee, et al.; *ACS nano, vol 18, 19568, 2024.* </li>
-                    <li><a href="#" target="_blank">Moisture-triggered proton conductivity switching in metal-organic frameworks: role of coordinating solvents</a>, H. K. Lee#, Y. Oruganti#, J. Lee#, **S. Han**, et al.; *Journal of Materials Chemistry A, vol. 12, 795-801, 2023.* </li>
-                    <li><a href="#" target="_blank">Physicochemical Profiling of Macrophage Heterogeneity Using Deep Learning Integrated Nanosensor Cytometry</a>, **S. Han**, Y. Lee, J. Kim, S.Y. Cho*; *ACS Sensors, vol. 8, 1676, 2023.* </li>
-                </ul>
-            </section>
+        <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Seunghee Han</h1>
+            <p class="subtitle">PhD Candidate in Materials Informatics · KAIST Chemical & Biomolecular Engineering</p>
             
-            <hr>
-
-                        <section id="experience">
-                <h2>Experiences</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>Visiting Student</h3>
-                        <p><strong>Prof. Saad Aldin Moosavi Lab, University of Toronto (UofT), Canada</strong> | 01. 2023 ~ 02. 2023 </p>
-                        <p>Collaboration on Inorganic Crystal Design using Deep Learning.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>Internship (Materials Informatics Lab)</h3>
-                        <p><strong>LG AI Research</strong> | 02. 2022 ~ 09. 2022 </p>
-                        <p>Contributed to AI model development for polymer property prediction and material design.</p>
-                    </div>
-                </div>
-            </section>
-
-            <hr>
-            
-                        <section id="education">
-                <h2>Education</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>Ph.D. Candidate</h3>
-                        <p><strong>Korea Advanced Institute of Science and Technology (KAIST)</strong> | Mar, 2023 - Present </p>
-                        <p>Dept. of Chemical and Biomolecular Engineering, Daejeon, Korea <br>
-                        Thesis: Design of Metal-Organic Frameworks (MOFs) Using Experimental Data-Driven Transformers <br>
-                        Advisor: Prof. Jihan Kim </p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>M.S. (Master of Science)</h3>
-                        <p><strong>Korea Advanced Institute of Science and Technology (KAIST)</strong> | Mar, 2021 - Feb, 2023 </p>
-                        <p>Dept. of Chemical and Biomolecular Engineering, Daejeon, Korea <br>
-                        Thesis: Design and Screening of Metal Organic Frameworks for Ethane/Ethylene Separation <br>
-                        Advisor: Prof. Jihan Kim </p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h3>B.S. (Bachelor of Science)</h3>
-                        <p><strong>Korea Advanced Institute of Science and Technology (KAIST)</strong> | Mar, 2017 - Feb, 2021 </p>
-                        <p>Dept. of Chemical and Biomolecular Engineering, Daejeon, Korea <br>
-                        **Summa Cum Laude** (Highest Honors) </p>
-                    </div>
-                </div>
-            </section>
-
-            <hr>
-
-                        <section id="contact">
-                <h2>Contact Information</h2>
-                <div class="contact-info">
-                    <p>I welcome collaborations and technical consultations.</p>
-                    <p>
-                        <a href="mailto:sisifhro@kaist.ac.kr">📧 sisifhro@kaist.ac.kr</a> 
-                        <span style="margin: 0 10px;">|</span>
-                        <span>📍 KAIST, Daejeon, Republic of Korea </span>
-                    </p>
-                    <p style="margin-top: 10px;">
-                        <a href="https://github.com/seunghhs" target="_blank">💻 seunghhs.github.io</a> 
-                    </p>
-                </div>
-            </section>
+            <div class="profile-img">
+                <img src="img/profile.jpg" alt="Seunghee Han Profile Picture"> 
+            </div>
+            
+            <div class="keywords">
+                <span class="keyword">🧠 Materials Informatics</span>
+                <span class="keyword">💻 AI/Machine Learning</span>
+                <span class="keyword">⚛️ MOFs & Polymers</span>
+                <span class="keyword">🧪 Molecular Simulation</span>
+                <span class="keyword">🗣️ Large Language Models (LLMs)</span>
+            </div>
+            
+            <div class="hero-links">
+                <a href="#publications" class="btn btn-primary">
+                    <span>View Publications</span> →
+                </a>
+                <a href="mailto:sisifhro@kaist.ac.kr" class="btn btn-secondary">
+                    <span>Email Me</span> ✉️
+                </a>
+            </div>
         </div>
-    </main>
+    </section>
+
+        <section id="research" class="about">
+        <div class="container">
+            <h2 class="section-title">Research Interests</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h4>1. High-Efficiency Material Screening and Discovery</h4>
+                        <p>Accelerating advanced material discovery through the integration of high-throughput virtual screening (HTVS) combined with molecular simulations, and machine learning (ML).</p>
+                    <h4>2. Machine Learning-Based Structure-Property Relationship Elucidation</h4>
+                        <p>Exploring complex relationships between the structural characteristics and performance metrics of materials using sophisticated machine learning models, particularly Transformer models.</p>
+                    <h4>3. AI-Driven Novel Material and System Design</h4>
+                        <p>Inverse design and synthesis of novel materials applying generative models, such as diffusion models and transformer models.</p>
+                    <h4>4. Data Mining and Knowledge Extraction using Large Language Models (LLMs)</h4>
+                        <p>Involved in developing methodologies that leverage Large Language Models (LLMs) to automatically collect and analyze vast amounts of material properties and synthesis condition data from scientific literature.</p>
+                    <h4>5. Multiscale Simulation and Mechanism Interpretation</h4>
+                        <p>Elucidating complex behaviors and mechanisms within MOFs, polymers, catalysts, and battery systems through density functional theory (DFT) and molecular dynamics (MD) simulations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skill Highlights</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Molecular Simulation Tools</h3>
+                    <ul>
+                        <li>VASP </li>
+                        <li>Gaussian </li>
+                        <li>LAMMPS </li>
+                        <li>RASPA </li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Programming & Machine Learning</h3>
+                    <ul>
+                        <li>Python, Matlab, Shell script </li>
+                        <li>Scikit-learn </li>
+                        <li>Graph Neural Networks (GNN) </li>
+                        <li>Diffusion & Transformer Models </li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Visualization & Research Topics</h3>
+                    <ul>
+                        <li>Material Studio, VMD, Avogadro </li>
+                        <li>VESTA, OVITO </li>
+                        <li>MOFs, Polymers, Catalysts, Battery Systems </li>
+                        <li>Proton Conductors, Gas Separation </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section id="publications" class="publications">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <h3>Selected Works (First/Co-First/Major Contributor)</h3>
+            <div class="publication-item">
+                <h4><a href="#" class="doi-link" target="_blank">**Harnessing large language model to collect and analyze metal-organic framework property dataset**</a></h4>
+                <p class="journal-info">
+                    Y. Kang, W. Lee, T. Bae, **S. Han**, H. Jang, J. Kim* | *JACS, 2025.* 
+                </p>
+            </div>
+            <div class="publication-item">
+                <h4><a href="#" class="doi-link" target="_blank">**Machine learning-based prediction of proton conductivity in metal–organic frameworks**</a></h4>
+                <p class="journal-info">
+                    **S. Han**, B.G. Lee, D.W. Lim, J. Kim* | *Chem. Mater., vol 36, 11280, 2024.* 
+                </p>
+            </div>
+            <div class="publication-item">
+                <h4><a href="#" class="doi-link" target="_blank">**Multimodal Transformer for Property Prediction in Polymers**</a></h4>
+                <p class="journal-info">
+                    **S. Han**, Y. Kang, H. Park, J. Yi, G. Park, J. Kim* | *ACS Appl Mater Interfaces., vol 16, 16853, 2024.* 
+                </p>
+            </div>
+
+            <h3>Other Collaborative Publications (Co-Author)</h3>
+            <div class="publication-item collaborative">
+                <h4><a href="#" class="doi-link" target="_blank">Superhydrophilic Silica-Coated Au Nanoislands for Efficient Capture and Enhanced SERS Detection of Airborne Biomarkers</a></h4>
+                <p class="journal-info">
+                    S. Lee, J. Park, **S. Han**, E. S. Yu, J. Kim, C. Hwang, D. S. Lee, K. H. Jeong* | *ACS Applied Materials & Interfaces, 2025 (Accepted).* 
+                </p>
+            </div>
+            <div class="publication-item collaborative">
+                <h4><a href="#" class="doi-link" target="_blank">Dual‐Strategy Direct Photocatalytic Patterning for Efficient Perovskite Nanocrystal LED Displays</a></h4>
+                <p class="journal-info">
+                    S. Maeng, J. Kim, T. Kim, S. Lee, **S. Han**, S. J. Park, C. Kim, J. Kim, Y. Lee*, H. Cho* | *Advanced Materials, e08217, 2025.* 
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experiences</h2>
+            <div class="education-timeline" style="max-width: 800px; margin: 0 auto;">
+                <div class="timeline-item">
+                    <strong>Visiting Student</strong>
+                    <em>Prof. Saad Aldin Moosavi Lab, University of Toronto (UofT), Canada | 01. 2023 ~ 02. 2023</em> 
+                    <p>Collaboration on Inorganic Crystal Design using Deep Learning.</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>Internship (Materials Informatics Lab)</strong>
+                    <em>LG AI Research | 02. 2022 ~ 09. 2022</em> 
+                    <p>Contributed to AI model development for polymer property prediction and material design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education" style="background: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline" style="max-width: 800px; margin: 0 auto;">
+                <div class="timeline-item">
+                    <strong>Ph.D. Candidate - Chemical and Biomolecular Engineering</strong>
+                    <em>Korea Advanced Institute of Science and Technology (KAIST) | Mar, 2023 - Present</em> 
+                    <p>Thesis: Design of Metal-Organic Frameworks (MOFs) Using Experimental Data-Driven Transformers. Advisor: Prof. Jihan Kim </p>
+                </div>
+                <div class="timeline-item">
+                    <strong>M.S. - Chemical and Biomolecular Engineering</strong>
+                    <em>Korea Advanced Institute of Science and Technology (KAIST) | Mar, 2021 - Feb, 2023</em> 
+                    <p>Thesis: Design and Screening of Metal Organic Frameworks for Ethane/Ethylene Separation. Advisor: Prof. Jihan Kim </p>
+                </div>
+                <div class="timeline-item">
+                    <strong>B.S. - Chemical and Biomolecular Engineering</strong>
+                    <em>Korea Advanced Institute of Science and Technology (KAIST) | Mar, 2017 - Feb, 2021</em> 
+                    <p>Awarded: **Summa Cum Laude** (Highest Honors) </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Feel free to reach out for collaborations or inquiries.</p>
+            <div class="contact-links">
+                <a href="mailto:sisifhro@kaist.ac.kr" class="contact-link">
+                    <span>📧</span> sisifhro@kaist.ac.kr
+                </a>
+                <a href="https://github.com/seunghhs" class="contact-link" target="_blank">
+                    <span>💻</span> GitHub (seunghhs)
+                </a>
+            </div>
+        </div>
+    </section>
 
         <footer>
-        <p>&copy; 2025 Seunghee Han. All rights reserved. | Powered by GitHub Pages</p>
+        <p>&copy; 2025 Seunghee Han · KAIST | Powered by GitHub Pages</p>
     </footer>
 
-        <script>
-        // 부드러운 스크롤 구현
+    <script>
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -529,31 +698,9 @@
             });
         });
 
-        // 스크롤 시 헤더 스타일 변경
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
-            } else {
-                header.style.backgroundColor = 'var(--primary-color)';
-            }
-        });
-
-        // 페이지 로드 시 애니메이션
-        window.addEventListener('load', function() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach((section, index) => {
-                setTimeout(() => {
-                    section.style.opacity = '0';
-                    section.style.transform = 'translateY(20px)';
-                    section.style.transition = 'all 0.5s ease';
-                    
-                    setTimeout(() => {
-                        section.style.opacity = '1';
-                        section.style.transform = 'translateY(0)';
-                    }, 100);
-                }, index * 100);
-            });
+        // Add floating animation to keywords
+        document.querySelectorAll('.keyword').forEach((keyword, index) => {
+            keyword.style.animation = `float ${3 + index * 0.5}s ease-in-out infinite`;
         });
     </script>
 </body>
