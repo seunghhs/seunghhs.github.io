@@ -1,762 +1,1879 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Seunghee Han - PhD Candidate in Chemical and Biomolecular Engineering at KAIST, specializing in Materials Informatics and AI-Driven Material Design">
-    <meta name="keywords" content="Seunghee Han, KAIST, Chemical Engineering, Materials Informatics, AI, Machine Learning, MOFs, Transformer Models, Molecular Simulation">
-    <meta name="author" content="Seunghee Han">
-    
-    <title>Seunghee Han | PhD Candidate - KAIST CBE</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Pastel Color Palette */
-        :root {
-            --bg-white: #ffffff;
-            --bg-light: #fafbfc;
-            --text-primary: #2c3e50;
-            --text-secondary: #5a6c7d;
-            --text-light: #94a3b8;
-            
-            /* Pastel Project Colors */
-            --pastel-green: #a8e6cf;
-            --pastel-green-dark: #7fcdbb;
-            --pastel-pink: #ffd3d3;
-            --pastel-pink-dark: #ffb6b6;
-            --pastel-blue: #c7e9ff;
-            --pastel-blue-dark: #a6d8f4;
-            --pastel-purple: #e0c3fc;
-            --pastel-yellow: #fff3b8;
-            
-            --border-light: #e5e7eb;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.08);
-            
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-white);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Header */
-        header {
-            background-color: var(--bg-white);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-        }
-        
-        nav a:hover {
-            background-color: var(--bg-light);
-            color: var(--text-primary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* Color changed to reflect Chemical/Materials science with an AI/ML tint */
-            background: linear-gradient(135deg, var(--pastel-purple) 0%, var(--pastel-blue) 50%, var(--pastel-green) 100%);
-            position: relative;
-            padding-top: 80px;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0%, transparent 50%);
-        }
-        
-        .hero-content {
-            text-align: center;
-            z-index: 2;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 30px;
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(10px);
-            max-width: 600px;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin: 1.5rem 0;
-        }
-        
-        .keyword {
-            background: var(--bg-white);
-            color: var(--text-secondary);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid var(--border-light);
-            transition: var(--transition);
-        }
-        
-        .keyword:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .hero-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .btn-primary {
-            background: var(--text-primary);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .btn-secondary {
-            background: var(--bg-white);
-            color: var(--text-primary);
-            border: 2px solid var(--border-light);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--bg-light);
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 5rem 0;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-        
-        /* About Section */
-        .about {
-            background: var(--bg-light);
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-blue)); /* Updated gradient */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .about-text p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .education-timeline {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--bg-white);
-            border-radius: 15px;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .timeline-item {
-            padding: 0.8rem 0;
-            border-left: 3px solid var(--pastel-blue);
-            padding-left: 1.5rem;
-            margin-left: 0.5rem;
-            position: relative;
-        }
-        
-        .timeline-item::before {
-            content: '•';
-            position: absolute;
-            left: -12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--pastel-blue-dark);
-            font-size: 1.5rem;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seunghee Han - PhD Candidate at KAIST, specializing in Metal-Organic Frameworks, Machine Learning, and AI-Driven Material Design">
+    <meta name="keywords" content="Seunghee Han, KAIST, MOFs, Machine Learning, Material Design, Transformer, Chemical Engineering">
+    <meta name="author" content="Seunghee Han">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Seunghee Han - Materials AI Research | KAIST PhD">
+    <meta property="og:description" content="PhD researcher specializing in MOFs, machine learning, and AI-driven material design at KAIST">
+    <meta property="og:url" content="https://seunghehan.github.io">
+    <meta property="og:type" content="website">
+
+    <title>Seunghee Han | PhD Candidate - KAIST CBE</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Typed.js for typing effect -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        :root {
+            /* Pastel Color Palette from ver2 */
+            --pastel-green: #a8e6cf;
+            --pastel-green-dark: #7fcdbb;
+            --pastel-pink: #ffd3d3;
+            --pastel-pink-dark: #ffb6b6;
+            --pastel-blue: #c7e9ff;
+            --pastel-blue-dark: #a6d8f4;
+            --pastel-purple: #e0c3fc;
+            --pastel-yellow: #fff3b8;
+
+            --primary-blue: #7fb3d5;
+            --accent-teal: #7fcdbb;
+            --success-green: #7fc29b;
+            --warm-coral: #ffb6b6;
+            --neutral-slate: #6b7280;
+            --light-gray: #fafbfc;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+
+            --gradient-tech: linear-gradient(135deg, #c7e9ff 0%, #e0c3fc 100%);
+            --gradient-research: linear-gradient(135deg, #a8e6cf 0%, #c7e9ff 100%);
+            --gradient-hero: linear-gradient(135deg, #c7e9ff 0%, #a8e6cf 50%, #ffd3d3 100%);
+
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+
+            --font-heading: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background: var(--bg-white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .project-header {
-            padding: 2rem;
-            color: var(--text-primary);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card.mof .project-header {
-            background: linear-gradient(135deg, var(--pastel-green), var(--pastel-green-dark));
-        }
-        
-        .project-card.ml .project-header {
-            background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink)); /* Reused pink/purple for ML focus */
-        }
-        
-        .project-card.llm .project-header {
-            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-blue-dark));
-        }
-        
-        .project-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .project-content {
-            padding: 2rem;
-        }
-        
-        .project-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        
-        .project-content p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-        
-        .project-status {
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .status-published {
-            background: rgba(168, 230, 207, 0.2);
-            color: #22a06b;
-        }
-        
-        .status-completed {
-            background: rgba(255, 211, 211, 0.2);
-            color: #e74c3c;
-        }
-        
-        .status-ongoing {
-            background: rgba(199, 233, 255, 0.2);
-            color: #3498db;
-        }
-        
-        /* Publications */
-        .publications {
-            background: var(--bg-light);
-        }
-        
-        .publication-item {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--pastel-green);
-        }
-        
-        .publication-item.llm-pub { border-left-color: var(--pastel-blue); }
-        .publication-item.poly-pub { border-left-color: var(--pastel-purple); }
-        .publication-item.mof-pub { border-left-color: var(--pastel-green-dark); }
-        
-        .publication-item h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-        
-        .journal-info {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .doi-link {
-            color: #22a06b;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .doi-link:hover {
-            text-decoration: underline;
-        }
-        
-        /* Contact */
-        .contact {
-            text-align: center;
-            padding: 4rem 0;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: var(--bg-light);
-            border-radius: 25px;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: var(--transition);
-            border: 1px solid var(--border-light);
-        }
-        
-        .contact-link:hover {
-            background: var(--bg-white);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-        
-        /* New section for Skills */
-        .skills-grid {
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border-color: #475569;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient-research);
+            z-index: 10000;
+            transition: width 0.3s ease;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-primary);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(var(--bg-primary), 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-tech);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--pastel-green-dark);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pastel-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--pastel-green);
+            transform: rotate(180deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-hero);
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(8, 145, 178, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(5, 150, 105, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(10px) translateX(-10px); }
+            75% { transform: translateY(-10px) translateX(20px); }
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+        }
+
+        @keyframes particle-float {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            animation: slideInUp 1s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease 0.2s both;
+        }
+
+        .typing-container {
+            height: 40px;
+            margin-bottom: 2rem;
+        }
+
+        .typed-text {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            font-family: var(--font-mono);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            animation: slideInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-blue);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--gradient-tech);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Research Metrics Dashboard */
+        .metrics-section {
+            background: var(--bg-secondary);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-research);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .metric-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--pastel-green-dark);
+            font-family: var(--font-mono);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* Chart Container */
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            position: relative;
+            padding: 5rem 0;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-research);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--pastel-green);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--bg-primary);
+            z-index: 2;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--pastel-green-dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            background: var(--pastel-blue);
+            color: var(--text-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Research Projects Section */
+        .projects-section {
+            background: var(--bg-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-tech);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: var(--gradient-research);
+            color: white;
+            position: relative;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .project-subtitle {
+            opacity: 0.95;
+            font-size: 0.95rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-badge {
+            background: var(--pastel-blue);
+            color: var(--text-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--pastel-green-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+        }
+
+        /* Publications Section */
+        .publications-section {
+            position: relative;
+        }
+
+        .publication-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--pastel-green);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .publication-card:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .publication-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .publication-title {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .impact-badge {
+            background: linear-gradient(135deg, var(--pastel-yellow), var(--warm-coral));
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(255, 183, 183, 0.3);
+        }
+
+        .publication-authors {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .publication-journal {
+            color: var(--pastel-green-dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .doi-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--pastel-green);
+            color: var(--text-primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--pastel-green-dark);
+        }
+
+        .doi-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(168, 230, 207, 0.4);
+            background: var(--pastel-green-dark);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: var(--bg-secondary);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--pastel-green-dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .skill-percentage {
+            color: var(--pastel-green-dark);
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-tech);
+            border-radius: 10px;
+            width: 0;
+            transition: width 2s ease;
+            position: relative;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            background: rgba(255,255,255,0.3);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-20px); }
+            100% { transform: translateX(20px); }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--gradient-research);
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            -webkit-text-fill-color: var(--text-primary);
+        }
+
+        .contact-section .section-subtitle {
+            color: var(--text-secondary);
+        }
+
+        .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            text-align: left;
+            margin: 3rem 0;
         }
 
-        .skill-group h4 {
-            color: var(--pastel-blue-dark);
+        .contact-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--pastel-green-dark);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-card:hover {
+            background: var(--pastel-green);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+        }
+
+        .contact-title {
             font-size: 1.2rem;
-            border-bottom: 2px solid var(--border-light);
-            padding-bottom: 0.5rem;
-        }
-
-        .skill-group ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .skill-group li {
-            background: var(--bg-white);
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
             margin-bottom: 0.5rem;
-            box-shadow: var(--shadow-sm);
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-weight: 600;
         }
-        
-        /* Footer */
-        footer {
-            background: var(--bg-light);
-            padding: 2rem 0;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .profile-img {
-                margin: 0 auto;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-        }
-    </style>
+
+        .contact-info {
+            color: var(--text-secondary);
+        }
+
+        .contact-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .cv-download {
+            margin-top: 2rem;
+        }
+
+        .cv-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--pastel-purple);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border: 2px solid var(--pastel-purple);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cv-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+            background: var(--pastel-yellow);
+            border-color: var(--pastel-yellow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            color: var(--text-secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--pastel-green-dark);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .timeline-line {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                margin-left: 40px;
+            }
+
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-circle {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--pastel-green-dark);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body>
-        <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<body data-theme="light">
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-circle"></div>
+    </div>
 
-        <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Seunghee Han</h1>
-            <p class="subtitle">PhD Candidate · KAIST Chemical and Biomolecular Engineering</p>
-            
-            <div class="keywords">
-                <span class="keyword">🧠 Materials Informatics</span>
-                <span class="keyword">🤖 AI-Driven Design</span>
-                <span class="keyword">🔬 MOFs & Polymers</span>
-                <span class="keyword">💻 Molecular Simulation</span>
-            </div>
-            
-            <div class="hero-links">
-                <a href="#research" class="btn btn-primary">
-                    <span>View Research</span> →
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <span>Contact</span> ✉️
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
 
-        <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me & Education</h2>
-            <div class="about-content">
-                                <div class="profile-img">SH</div>
-                <div class="about-text">
-                    <p>I am a PhD candidate in the Department of Chemical and Biomolecular Engineering at KAIST , specializing in the application of advanced **Machine Learning (ML) techniques** for **Materials Informatics**. My research focuses on accelerating material discovery through the inverse design and virtual screening of novel materials like **Metal-Organic Frameworks (MOFs)** and **Polymers**, primarily leveraging models such as **Transformers** and **Generative Models**.</p>
-                    
-                    <div class="education-timeline">
-                        <h4 style="margin-bottom: 1rem;">Education History</h4>
-                        <div class="timeline-item">
-                            <strong>PhD in Chemical and Biomolecular Engineering</strong> - KAIST (Mar, 2023 - Current) 
-                            <p style="font-size: 0.9rem; color: var(--text-light);">Thesis: Design of Metal-Organic Frameworks (MOFs) Using Experimental Data-Driven Transformers</p> 
-                        </div>
-                        <div class="timeline-item">
-                            <strong>M.S. in Chemical and Biomolecular Engineering</strong> - KAIST (Mar, 2021 - Feb, 2023) 
-                            <p style="font-size: 0.9rem; color: var(--text-light);">Thesis: Design and Screening of Metal Organic Frameworks for Ethane/Ethylene Separation</p> 
-                        </div>
-                        <div class="timeline-item">
-                            <strong>B.S. in Chemical and Biomolecular Engineering</strong> - KAIST (Mar, 2017 - Feb, 2021) 
-                            <p style="font-size: 0.9rem; color: var(--text-light);">Awarded Summa Cum Laude</p> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-        <section id="research" class="projects">
-        <div class="container">
-            <h2 class="section-title">Core Research Interests</h2>
-            <div class="projects-grid">
-                                <div class="project-card mof">
-                    <div class="project-header">
-                        <div class="project-icon">🔍</div>
-                        <h3>High-Efficiency Material Screening & Discovery</h3>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-status status-published">HTVS & ML</span>
-                        <p>Accelerating discovery via High-Throughput Virtual Screening (HTVS) combined with molecular simulations and machine learning (ML).</p> 
-                    </div>
-                </div>
-
-                                <div class="project-card ml">
-                    <div class="project-header">
-                        <div class="project-icon">🧠</div>
-                        <h3>ML-Based Structure-Property Elucidation</h3>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-status status-completed">Transformer Models</span>
-                        <p>Exploring complex relationships between structural characteristics and material performance using sophisticated machine learning models, especially Transformer architectures.</p> 
-                    </div>
-                </div>
-                
-                                <div class="project-card llm">
-                    <div class="project-header">
-                        <div class="project-icon">📚</div>
-                        <h3>Data Mining with Large Language Models (LLMs)</h3>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-status status-ongoing">Knowledge Extraction</span>
-                        <p>Developing methodologies to leverage LLMs for automated collection and analysis of material properties and synthesis data from scientific literature.</p> 
-                    </div>
-                </div>
-            </div>
-            <div class="projects-grid" style="margin-top: 2rem;">
-                <div class="project-card ml">
-                    <div class="project-header">
-                        <div class="project-icon">💡</div>
-                        <h3>AI-Driven Novel Material and System Design</h3>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-status status-completed">Inverse Design</span>
-                        <p>Inverse design and synthesis of novel materials applying generative models, such as diffusion models and transformer models.</p> 
-                    </div>
-                </div>
-                
-                <div class="project-card mof">
-                    <div class="project-header">
-                        <div class="project-icon">⚛️</div>
-                        <h3>Multiscale Simulation and Mechanism Interpretation</h3>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-status status-published">DFT/MD</span>
-                        <p>Elucidating complex behaviors in MOFs, polymers, catalysts, and battery systems through DFT and MD simulations.</p> 
-                    </div>
-                </div>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">SH</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#metrics" class="nav-link">Research</a></li>
+                <li><a href="#timeline" class="nav-link">Academic Journey</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="mobile-menu-toggle" id="mobileToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-        </div>
-    </section>
+        </div>
+    </nav>
 
-        <section id="publications" class="publications">
-        <div class="container">
-            <h2 class="section-title">Selected Publications (Total 11)</h2>
-            <div class="publication-item mof-pub">
-                <h4>Machine learning-based prediction of proton conductivity in metal–organic frameworks</h4>
-                <p class="journal-info">
-                    <strong>Chem. Mater.</strong>, vol 36, 11280, 2024. <br>
-                    <em>S. Han, B.G. Lee, D.W. Lim, J. Kim*</em> 
-                </p>
-                            </div>
-            <div class="publication-item llm-pub">
-                <h4>Harnessing large language model to collect and analyze metal-organic framework property dataset</h4>
-                <p class="journal-info">
-                    <strong>JACS</strong>, 2025. <br>
-                    <em>Y. Kang, W. Lee, T. Bae, S. Han, H. Jang, J. Kim*</em> 
-                </p>
-                            </div>
-            <div class="publication-item poly-pub">
-                <h4>Multimodal Transformer for Property Prediction in Polymers</h4>
-                <p class="journal-info">
-                    <strong>ACS Appl Mater Interfaces.</strong>, vol 16, 16853, 2024. <br>
-                    <em>S. Han, Y. Kang, H. Park, J. Yi, G. Park, J. Kim*</em> 
-                </p>
-                            </div>
-            <div class="publication-item">
-                <h4>Design of New Inorganic Crystals with the Desired Composition Using Deep Learning</h4>
-                <p class="journal-info">
-                    <strong>J. Chem. Inf. Model.</strong>, vol. 63, 5755, 2023. <br>
-                    <em>S. Han, J. Lee, S. Han, S. Moosavi, J. Kim, C. Park*</em> 
-                </p>
-                            </div>
-            <p style="text-align: center; margin-top: 3rem; color: var(--text-secondary);">
-                *A full list of all 11 publications is available in the CV*
-            </p>
-        </div>
-    </section>
-    
-    <section id="skills" class="skills">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Seunghee Han</h1>
+            <p class="hero-subtitle">PhD Candidate at KAIST CBE</p>
+            <div class="typing-container">
+                <span class="typed-text" id="typed"></span>
+            </div>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">View Research</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Metrics Section -->
+    <section id="metrics" class="metrics-section">
         <div class="container">
-            <h2 class="section-title">Technical Skill Highlights</h2>
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <h4>💻 Programming & ML</h4>
-                    <ul>
-                        <li><strong>Python</strong> </li>
-                        <li>Matlab, Shell script </li>
-                        <li><strong>Transformer Models</strong>, Diffusion, GNN </li>
-                        <li>Scikit-learn </li>
-                    </ul>
+            <h2 class="section-title" data-aos="fade-up">Research Impact</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Advancing material science through AI and machine learning
+            </p>
+
+            <div class="metrics-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="metric-card">
+                    <div class="metric-icon">📝</div>
+                    <div class="metric-value" data-count="13">0</div>
+                    <div class="metric-label">Publications</div>
                 </div>
-                <div class="skill-group">
-                    <h4>🧪 Molecular Simulation Tools</h4>
-                    <ul>
-                        <li><strong>VASP</strong> </li>
-                        <li><strong>LAMMPS</strong>, RASPA </li>
-                        <li>Gaussian </li>
-                    </ul>
+                <div class="metric-card">
+                    <div class="metric-icon">📊</div>
+                    <div class="metric-value" data-count="11">0</div>
+                    <div class="metric-label">Published Papers</div>
                 </div>
-                <div class="skill-group">
-                    <h4>🖼️ Visualization & Software</h4>
-                    <ul>
-                        <li>Material Studio </li>
-                        <li>VMD, Avogadro </li>
-                        <li>VESTA, OVITO </li>
-                        <li>Illustration </li>
-                    </ul>
+                <div class="metric-card">
+                    <div class="metric-icon">🏆</div>
+                    <div class="metric-value" data-count="2">0</div>
+                    <div class="metric-label">Awards</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">🎤</div>
+                    <div class="metric-value" data-count="10">0</div>
+                    <div class="metric-label">Presentations</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">💼</div>
+                    <div class="metric-value" data-count="2">0</div>
+                    <div class="metric-label">Industry Experience</div>
                 </div>
             </div>
-            
-            <h2 class="section-title" style="margin-top: 5rem;">Professional Experience</h2>
-            <div class="education-timeline" style="margin-top: 0; padding: 2rem;">
-                <div class="timeline-item">
-                    <strong>Internship at LG AI Research (Materials Informatics Lab)</strong> 
-                    <p style="font-size: 0.9rem; color: var(--text-light);">Feb, 2022 ~ Sep, 2022</p> 
+
+            <div class="charts-container" data-aos="fade-up" data-aos-delay="300">
+                <div class="chart-card">
+                    <h3 class="chart-title">Research Areas Distribution</h3>
+                    <canvas id="researchChart"></canvas>
                 </div>
-                <div class="timeline-item">
-                    <strong>Visiting Student in Prof. Saad Aldin Moosavi, University of Toronto (UofT), Canada</strong> 
-                    <p style="font-size: 0.9rem; color: var(--text-light);">Jan, 2023 ~ Feb, 2023</p> 
+                <div class="chart-card">
+                    <h3 class="chart-title">Skills Proficiency</h3>
+                    <canvas id="skillsRadar"></canvas>
                 </div>
             </div>
         </div>
     </section>
 
-        <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Feel free to reach out for collaborations or inquiries</p>
-            <div class="contact-links">
-                <a href="mailto:sisifhro@kaist.ac.kr" class="contact-link">
-                    <span>📧</span> Email: sisifhro@kaist.ac.kr
-                </a>
-                                <a href="#" class="contact-link">
-                    <span>🔗</span> LinkedIn
-                </a>
-            </div>
-            <p style="margin-top: 1rem; color: var(--text-light);">Address: 1107, W1-3 Building, 291, Daehak-ro, Yuseong-gu, Daejeon, Republic of Korea</p> 
-        </div>
-    </section>
+    <!-- Academic Journey Section -->
+    <section id="timeline" class="timeline-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Academic Journey</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Milestones in research and education
+            </p>
 
-        <footer>
-        <p>&copy; 2025 Seunghee Han · KAIST Dept. of Chemical and Biomolecular Engineering</p>
-    </footer>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 (Upcoming)</div>
+                        <h3 class="timeline-title">Advanced Materials Publication</h3>
+                        <p class="timeline-description">
+                            "Dual-Strategy Direct Photocatalytic Patterning for Efficient Perovskite Nanocrystal LED Displays"<br>
+                            <strong>Advanced Materials</strong>, e08217
+                        </p>
+                        <span class="timeline-badge">📝 High Impact</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 45%;"></div>
+                </div>
 
-        // Add floating animation to keywords
-        document.querySelectorAll('.keyword').forEach((keyword, index) => {
-            keyword.style.animation = `float ${3 + index * 0.5}s ease-in-out infinite`;
-        });
+                <div class="timeline-item" data-aos="fade-left">
+                    <div style="width: 45%;"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025</div>
+                        <h3 class="timeline-title">JACS Publication</h3>
+                        <p class="timeline-description">
+                            "Harnessing large language model to collect and analyze metal-organic framework property dataset"<br>
+                            <strong>Journal of the American Chemical Society</strong>
+                        </p>
+                        <span class="timeline-badge">📝 Journal</span>
+                    </div>
+                </div>
 
-        // Add float animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float {
-                0%, 100% { transform: translateY(0px); }
-                50% { transform: translateY(-10px); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <h3 class="timeline-title">Multiple High-Impact Publications</h3>
+                        <p class="timeline-description">
+                            Published in <strong>Chem. Mater.</strong>, <strong>ACS Nano</strong>, and <strong>ACS Applied Materials & Interfaces</strong><br>
+                            Topics: Machine Learning, MOFs, Polymers, Sensors
+                        </p>
+                        <span class="timeline-badge">📝 Productive Year</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 45%;"></div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div style="width: 45%;"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h3 class="timeline-title">KIChE Poster Award</h3>
+                        <p class="timeline-description">
+                            Poster Presentation Award<br>
+                            Korean Institute of Chemical Engineers Spring Meeting<br>
+                            International Symposium
+                        </p>
+                        <span class="timeline-badge">🏆 Award</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021</div>
+                        <h3 class="timeline-title">Summa Cum Laude</h3>
+                        <p class="timeline-description">
+                            Graduated with highest honors<br>
+                            KAIST B.S. in Chemical Engineering<br>
+                            Outstanding academic achievement
+                        </p>
+                        <span class="timeline-badge">🏆 Honor</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 45%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Research Projects</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Advancing materials science through AI and computational methods
+            </p>
+
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-header">
+                        <div class="project-icon">🤖</div>
+                        <h3 class="project-title">AI-Driven Material Design</h3>
+                        <p class="project-subtitle">Transformer & Diffusion Models</p>
+                    </div>
+                    <div class="project-content">
+                        <div class="tech-stack">
+                            <span class="tech-badge">Transformer</span>
+                            <span class="tech-badge">Diffusion Model</span>
+                            <span class="tech-badge">EGMOF</span>
+                            <span class="tech-badge">XRD Integration</span>
+                        </div>
+                        <p class="project-description">
+                            Developing cutting-edge AI models for inverse design and synthesis of novel materials.
+                            Integrating experimental X-ray diffraction data with transformer architectures for enhanced
+                            property targeting in Metal-Organic Frameworks.
+                        </p>
+                        <a href="ai-materials.html" class="project-link">
+                            View Details →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-header" style="background: linear-gradient(135deg, #ffd3d3 0%, #ffb6b6 100%);">
+                        <div class="project-icon">🔬</div>
+                        <h3 class="project-title">MOFs & Polymers</h3>
+                        <p class="project-subtitle">Structure-Property Relationships</p>
+                    </div>
+                    <div class="project-content">
+                        <div class="tech-stack">
+                            <span class="tech-badge">Machine Learning</span>
+                            <span class="tech-badge">HTVS</span>
+                            <span class="tech-badge">Molecular Simulation</span>
+                            <span class="tech-badge">GNN</span>
+                        </div>
+                        <p class="project-description">
+                            Exploring complex relationships between structural characteristics and performance metrics
+                            of MOFs and polymers using sophisticated ML models. Focus on proton conductivity,
+                            ethane/ethylene separation, and multimodal property prediction.
+                        </p>
+                        <a href="mofs-polymers.html" class="project-link">
+                            View Details →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-header" style="background: linear-gradient(135deg, #c7e9ff 0%, #e0c3fc 100%);">
+                        <div class="project-icon">📚</div>
+                        <h3 class="project-title">LLMs for Materials</h3>
+                        <p class="project-subtitle">Data Mining & Knowledge Extraction</p>
+                    </div>
+                    <div class="project-content">
+                        <div class="tech-stack">
+                            <span class="tech-badge">LLMs</span>
+                            <span class="tech-badge">NLP</span>
+                            <span class="tech-badge">Data Mining</span>
+                            <span class="tech-badge">Literature Analysis</span>
+                        </div>
+                        <p class="project-description">
+                            Leveraging Large Language Models to automatically collect and analyze vast amounts of
+                            material properties and synthesis condition data from scientific literature.
+                            Building comprehensive datasets for MOFs and other advanced materials.
+                        </p>
+                        <a href="llm-materials.html" class="project-link">
+                            View Details →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="publications-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Selected Publications</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Peer-reviewed research in top-tier journals
+            </p>
+
+            <div class="publication-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="publication-header">
+                    <div>
+                        <h3 class="publication-title">
+                            Harnessing large language model to collect and analyze metal-organic framework property dataset
+                        </h3>
+                        <p class="publication-authors">
+                            Y. Kang, W. Lee, T. Bae, <strong>S. Han</strong>, H. Jang, J. Kim*
+                        </p>
+                        <p class="publication-journal">
+                            Journal of the American Chemical Society (JACS), 2025
+                        </p>
+                    </div>
+                    <div class="impact-badge">JACS</div>
+                </div>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1021/jacs.4c11085" target="_blank" class="doi-link">
+                        View Paper →
+                    </a>
+                </div>
+            </div>
+
+            <div class="publication-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="publication-header">
+                    <div>
+                        <h3 class="publication-title">
+                            Machine learning-based prediction of proton conductivity in metal–organic frameworks
+                        </h3>
+                        <p class="publication-authors">
+                            <strong>S. Han</strong>, B.G. Lee, D.W. Lim, J. Kim*
+                        </p>
+                        <p class="publication-journal">
+                            Chemistry of Materials, vol 36, 11280, 2024
+                        </p>
+                    </div>
+                    <div class="impact-badge">Chem. Mater.</div>
+                </div>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1021/acs.chemmater.4c02368" target="_blank" class="doi-link">
+                        View Paper →
+                    </a>
+                </div>
+            </div>
+
+            <div class="publication-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="publication-header">
+                    <div>
+                        <h3 class="publication-title">
+                            Multimodal Transformer for Property Prediction in Polymers
+                        </h3>
+                        <p class="publication-authors">
+                            <strong>S. Han</strong>, Y. Kang, H. Park, J. Yi, G. Park, J. Kim*
+                        </p>
+                        <p class="publication-journal">
+                            ACS Applied Materials & Interfaces, vol 16, 16853, 2024
+                        </p>
+                    </div>
+                </div>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1021/acsami.4c01207" target="_blank" class="doi-link">
+                        View Paper →
+                    </a>
+                </div>
+            </div>
+
+            <div class="publication-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="publication-header">
+                    <div>
+                        <h3 class="publication-title">
+                            Cobalt-doped ceria sensitizer effects on metal oxide nanofibers: heightened surface reactivity for high-performing chemiresistive sensors
+                        </h3>
+                        <p class="publication-authors">
+                            J.W. Baek, <strong>S. Han</strong>, S.E. Lee, et al., J. Kim, H.J. Park*, I.D. Kim*
+                        </p>
+                        <p class="publication-journal">
+                            ACS Nano, vol 18, 19568, 2024
+                        </p>
+                    </div>
+                    <div class="impact-badge">ACS Nano</div>
+                </div>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1021/acsnano.4c03168" target="_blank" class="doi-link">
+                        View Paper →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Technical Expertise</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Comprehensive skill set in computational and experimental methods
+            </p>
+
+            <div class="skills-container">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="skill-category-title">
+                        🔬 Molecular Simulation
+                    </h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>VASP (DFT)</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>LAMMPS (MD)</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>RASPA</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Gaussian</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="skill-category-title">
+                        🤖 Machine Learning
+                    </h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Transformer Models</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Graph Neural Networks</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Diffusion Models</span>
+                            <span class="skill-percentage">82%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="82"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Scikit-learn</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="skill-category-title">
+                        💻 Programming & Tools
+                    </h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MATLAB</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Shell Scripting</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Visualization Tools</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Let's collaborate on advancing materials science through AI
+            </p>
+
+            <div class="contact-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-info">
+                        <a href="mailto:sisifhro@kaist.ac.kr" class="contact-link">
+                            sisifhro@kaist.ac.kr
+                        </a>
+                    </p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3 class="contact-title">Location</h3>
+                    <p class="contact-info">
+                        KAIST W1-3 Building<br>
+                        Room 1107, Daejeon
+                    </p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🔬</div>
+                    <h3 class="contact-title">Research Group</h3>
+                    <p class="contact-info">
+                        Prof. Jihan Kim Group<br>
+                        KAIST CBE
+                    </p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🏢</div>
+                    <h3 class="contact-title">Experience</h3>
+                    <p class="contact-info">
+                        UofT Visiting Student<br>
+                        LG AI Research Intern
+                    </p>
+                </div>
+            </div>
+
+            <div class="cv-download" data-aos="fade-up" data-aos-delay="300">
+                <a href="CV_SeungheeHan.pdf" download class="cv-btn">
+                    📄 Download CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 Seunghee Han. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://kaist.ac.kr" target="_blank" class="footer-link">KAIST</a>
+                    <a href="https://cbe.kaist.ac.kr" target="_blank" class="footer-link">CBE Department</a>
+                    <a href="#" class="footer-link">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Typing Effect
+        const typed = new Typed('#typed', {
+            strings: [
+                'MOFs Design with AI',
+                'Machine Learning for Materials',
+                'Transformer Models',
+                'LLMs for Data Mining',
+                'Molecular Simulations',
+                'Structure-Property Relationships'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true
+        });
+
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Active Navigation Link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // Animated Counter
+        const counters = document.querySelectorAll('[data-count]');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const target = parseFloat(counter.getAttribute('data-count'));
+            const count = parseFloat(counter.innerText);
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => animateCounter(counter), 10);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        // Intersection Observer for counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Skill Progress Bars Animation
+        const skillBars = document.querySelectorAll('.skill-progress');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = width + '%';
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        skillBars.forEach(bar => {
+            skillObserver.observe(bar);
+        });
+
+        // Particles Animation
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.width = Math.random() * 3 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Research Areas Chart
+        const researchCtx = document.getElementById('researchChart').getContext('2d');
+        const researchChart = new Chart(researchCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['MOFs Design', 'Machine Learning', 'LLMs & Data Mining', 'Molecular Simulation', 'Polymers'],
+                datasets: [{
+                    data: [30, 35, 15, 15, 5],
+                    backgroundColor: [
+                        'rgba(199, 233, 255, 0.8)',
+                        'rgba(168, 230, 207, 0.8)',
+                        'rgba(224, 195, 252, 0.8)',
+                        'rgba(255, 211, 211, 0.8)',
+                        'rgba(255, 243, 184, 0.8)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary')
+                        }
+                    }
+                }
+            }
+        });
+
+        // Skills Radar Chart
+        const skillsCtx = document.getElementById('skillsRadar').getContext('2d');
+        const skillsRadarChart = new Chart(skillsCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Simulation', 'ML/AI', 'Programming', 'Research', 'Writing', 'Visualization'],
+                datasets: [{
+                    label: 'Skills',
+                    data: [88, 92, 85, 90, 85, 85],
+                    backgroundColor: 'rgba(168, 230, 207, 0.2)',
+                    borderColor: 'rgba(127, 205, 187, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(127, 205, 187, 1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Update charts on theme change
+        themeToggle.addEventListener('click', () => {
+            setTimeout(() => {
+                const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-primary');
+                researchChart.options.plugins.legend.labels.color = textColor;
+                researchChart.update();
+            }, 100);
+        });
+    </script>
 </body>
 </html>

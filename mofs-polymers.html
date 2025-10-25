@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MOFs and Polymers Research - Structure-Property Relationships by Seunghee Han at KAIST">
+    <title>MOFs & Polymers | Seunghee Han - KAIST Research</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        :root {
+            /* Pastel colors for MOFs project */
+            --primary-pink: #ffd3d3;
+            --accent-pink: #ffb6b6;
+            --dark-pink: #ff9999;
+            --light-pink: #fee2e2;
+            --neutral-slate: #6b7280;
+            --light-gray: #fafbfc;
+
+            --gradient-mofs: linear-gradient(135deg, #ffd3d3 0%, #ffb6b6 100%);
+            --gradient-warm: linear-gradient(135deg, #fff3b8 0%, #ffd3d3 100%);
+
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+
+            --font-heading: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border-color: #475569;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-primary);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 2px solid var(--border-color);
+        }
+
+        .back-btn:hover {
+            color: var(--primary-pink);
+            border-color: var(--primary-pink);
+            transform: translateX(-5px);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-pink);
+            transform: rotate(180deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-mofs);
+            position: relative;
+            margin-top: 60px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20h20v20H20zM60 20h20v20H60zM20 60h20v20H20zM60 60h20v20H60z' fill='%23ffffff' fill-opacity='0.03'/%3E%3C/svg%3E") repeat;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 1000px;
+            padding: 3rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-pink);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--neutral-slate);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .badge-mof {
+            background: var(--light-pink);
+            color: var(--dark-pink);
+            border: 2px solid var(--primary-pink);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-mofs);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Research Focus */
+        .focus-section {
+            background: var(--bg-secondary);
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .focus-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .focus-header {
+            background: var(--gradient-warm);
+            padding: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .focus-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .focus-subtitle {
+            color: var(--neutral-slate);
+            font-size: 0.9rem;
+        }
+
+        .focus-content {
+            padding: 2rem;
+        }
+
+        .property-list {
+            list-style: none;
+        }
+
+        .property-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .property-item:last-child {
+            border-bottom: none;
+        }
+
+        .property-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--light-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-pink);
+            flex-shrink: 0;
+        }
+
+        .property-text {
+            flex: 1;
+        }
+
+        .property-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .property-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ML Methods */
+        .methods-section {
+            position: relative;
+        }
+
+        .methods-showcase {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .method-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .method-step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
+            background: var(--gradient-mofs);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Publications Grid */
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .pub-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pub-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-mofs);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .pub-card:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pub-journal {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--light-pink);
+            color: var(--dark-pink);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .pub-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pub-link:hover {
+            gap: 1rem;
+        }
+
+        /* Results */
+        .results-section {
+            background: var(--bg-secondary);
+        }
+
+        .chart-container {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .method-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .publications-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="back-btn">
+                ← Back to Portfolio
+            </a>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">MOFs & Polymers Research</h1>
+            <p class="hero-subtitle">
+                Elucidating structure-property relationships through machine learning and molecular simulations
+            </p>
+            <div class="hero-badges">
+                <span class="badge badge-mof">Machine Learning</span>
+                <span class="badge badge-mof">HTVS</span>
+                <span class="badge badge-mof">GNN</span>
+                <span class="badge badge-mof">Molecular Simulation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Focus -->
+    <section class="focus-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <div class="section-icon">🔬</div>
+                Research Focus Areas
+            </h2>
+            <div class="focus-grid">
+                <div class="focus-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="focus-header">
+                        <h3 class="focus-title">Metal-Organic Frameworks</h3>
+                        <p class="focus-subtitle">Advanced porous materials</p>
+                    </div>
+                    <div class="focus-content">
+                        <ul class="property-list">
+                            <li class="property-item">
+                                <div class="property-icon">⚡</div>
+                                <div class="property-text">
+                                    <div class="property-name">Proton Conductivity</div>
+                                    <div class="property-desc">ML prediction with 95% accuracy</div>
+                                </div>
+                            </li>
+                            <li class="property-item">
+                                <div class="property-icon">💨</div>
+                                <div class="property-text">
+                                    <div class="property-name">Gas Separation</div>
+                                    <div class="property-desc">Ethane/Ethylene selective adsorption</div>
+                                </div>
+                            </li>
+                            <li class="property-item">
+                                <div class="property-icon">🔄</div>
+                                <div class="property-text">
+                                    <div class="property-name">Flexibility</div>
+                                    <div class="property-desc">Hydrogen-bonding network control</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="focus-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="focus-header">
+                        <h3 class="focus-title">Polymer Materials</h3>
+                        <p class="focus-subtitle">Multimodal property prediction</p>
+                    </div>
+                    <div class="focus-content">
+                        <ul class="property-list">
+                            <li class="property-item">
+                                <div class="property-icon">🧬</div>
+                                <div class="property-text">
+                                    <div class="property-name">Multimodal Transformer</div>
+                                    <div class="property-desc">Text + structure integration</div>
+                                </div>
+                            </li>
+                            <li class="property-item">
+                                <div class="property-icon">📊</div>
+                                <div class="property-text">
+                                    <div class="property-name">Property Prediction</div>
+                                    <div class="property-desc">Mechanical, thermal, electrical</div>
+                                </div>
+                            </li>
+                            <li class="property-item">
+                                <div class="property-icon">🎯</div>
+                                <div class="property-text">
+                                    <div class="property-name">High Accuracy</div>
+                                    <div class="property-desc">Patent-pending method</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ML Methods -->
+    <section class="methods-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <div class="section-icon">🤖</div>
+                Machine Learning Pipeline
+            </h2>
+            <div class="methods-showcase" data-aos="fade-up" data-aos-delay="100">
+                <div class="method-steps">
+                    <div class="method-step">
+                        <div class="step-number">1</div>
+                        <h4 class="step-title">Data Collection</h4>
+                        <p class="step-desc">HTVS + Experimental data integration</p>
+                    </div>
+                    <div class="method-step">
+                        <div class="step-number">2</div>
+                        <h4 class="step-title">Feature Engineering</h4>
+                        <p class="step-desc">Structural & chemical descriptors</p>
+                    </div>
+                    <div class="method-step">
+                        <div class="step-number">3</div>
+                        <h4 class="step-title">Model Training</h4>
+                        <p class="step-desc">GNN, Transformer, ensemble methods</p>
+                    </div>
+                    <div class="method-step">
+                        <div class="step-number">4</div>
+                        <h4 class="step-title">Validation</h4>
+                        <p class="step-desc">Experimental verification</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Publications -->
+    <section class="publications-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <div class="section-icon">📚</div>
+                Key Publications
+            </h2>
+            <div class="publications-grid">
+                <div class="pub-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="pub-journal">Chem. Mater.</span>
+                    <h3 class="pub-title">Machine learning-based prediction of proton conductivity in metal–organic frameworks</h3>
+                    <p class="pub-authors">S. Han, B.G. Lee, D.W. Lim, J. Kim* (2024)</p>
+                    <a href="https://doi.org/10.1021/acs.chemmater.4c02368" target="_blank" class="pub-link">
+                        View Paper →
+                    </a>
+                </div>
+
+                <div class="pub-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="pub-journal">ACS Appl. Mater. Interfaces</span>
+                    <h3 class="pub-title">Multimodal Transformer for Property Prediction in Polymers</h3>
+                    <p class="pub-authors">S. Han, Y. Kang, H. Park, et al. (2024)</p>
+                    <a href="https://doi.org/10.1021/acsami.4c01207" target="_blank" class="pub-link">
+                        View Paper →
+                    </a>
+                </div>
+
+                <div class="pub-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="pub-journal">Small</span>
+                    <h3 class="pub-title">Super Proton Conductivity Through Control of Hydrogen-Bonding Networks in Flexible MOFs</h3>
+                    <p class="pub-authors">S. Han, J. Kim, E.S. Cho* (2023)</p>
+                    <a href="https://doi.org/10.1002/smll.202301122" target="_blank" class="pub-link">
+                        View Paper →
+                    </a>
+                </div>
+
+                <div class="pub-card" data-aos="fade-up" data-aos-delay="400">
+                    <span class="pub-journal">ACS Omega</span>
+                    <h3 class="pub-title">Design and Screening of Metal–Organic Frameworks for Ethane/Ethylene Separation</h3>
+                    <p class="pub-authors">S. Han, J. Kim* (2023)</p>
+                    <a href="https://doi.org/10.1021/acsomega.2c07517" target="_blank" class="pub-link">
+                        View Paper →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <div class="section-icon">📊</div>
+                Research Impact
+            </h2>
+            <div class="chart-container" data-aos="fade-up" data-aos-delay="100">
+                <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">ML Model Performance Comparison</h3>
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // Performance Chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Proton Conductivity', 'Gas Separation', 'Polymer Properties', 'Structure Prediction'],
+                datasets: [{
+                    label: 'Traditional Methods',
+                    data: [72, 68, 75, 70],
+                    backgroundColor: 'rgba(200, 200, 200, 0.6)',
+                    borderColor: 'rgba(150, 150, 150, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Our ML Models',
+                    data: [95, 92, 88, 93],
+                    backgroundColor: 'rgba(255, 182, 182, 0.8)',
+                    borderColor: 'rgba(255, 153, 153, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 60,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Accuracy (%)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
