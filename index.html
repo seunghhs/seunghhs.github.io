@@ -49,7 +49,7 @@
             --dark-bg: #0f172a;
             --dark-card: #1e293b;
 
-            --gradient-tech: linear-gradient(135deg, #c7e9ff 0%, #e0c3fc 100%);
+            --gradient-tech: linear-gradient(135deg, #b4dcff 0%, #d2b4f8 100%);
             --gradient-research: linear-gradient(135deg, #a8e6cf 0%, #c7e9ff 100%);
             --gradient-hero: linear-gradient(135deg, #c7e9ff 0%, #a8e6cf 50%, #ffd3d3 100%);
 
@@ -186,70 +186,69 @@
 
 
         .dropdown {
-            position: relative; /* 서브메뉴의 기준점이 됨 */
+            position: relative;
         }
-        
+
         .dropdown-menu {
-            display: none; /* 평소에는 숨김 */
-            position: absolute; /* 메인 메뉴 위에 뜸 */
-            top: 100%; /* "Research" 링크 바로 아래에 위치 */
+            display: none;
+            position: absolute;
+            top: 100%;
             left: 0;
             background: var(--bg-primary);
             box-shadow: var(--shadow-md);
             border-radius: 10px;
             padding: 0.5rem 0;
             list-style: none;
-            z-index: 1100; /* 다른 요소보다 위에 오도록 */
-            min-width: 200px; /* 서브메뉴 최소 너비 */
+            z-index: 1100;
+            min-width: 200px;
             border: 1px solid var(--border-color);
         }
-        
-        /* 메인 메뉴(dropdown)에 마우스 올렸을 때 서브메뉴(dropdown-menu) 표시 */
+
         .dropdown:hover .dropdown-menu {
             display: block;
         }
-        
+
         .dropdown-menu a {
-            padding: 0.75rem 1.5rem; /* 서브메뉴 아이템 간격 */
-            display: block; /* 링크 영역을 블록으로 만듦 */
-            white-space: nowrap; /* "Presentations" 같은 긴 단어 줄바꿈 방지 */
+            padding: 0.75rem 1.5rem;
+            display: block;
+            white-space: nowrap;
         }
-        
-        
+
+
         .dropdown-menu a::after {
             display: none;
         }
-        
-        
+
+
         .dropdown-menu a:hover {
             background-color: var(--bg-secondary);
             color: var(--pastel-green-dark);
         }
-        
-        
+
+
         @media (max-width: 768px) {
             .dropdown {
-                width: 100%; /* 모바일에서 꽉 차게 */
+                width: 100%;
             }
-            
+
             .dropdown-menu {
-                position: static; /* 모바일에서는 띄우지 않고 제자리에 */
-                display: block; /* 모바일에서는 항상 보이도록 */
+                position: static;
+                display: block;
                 background: transparent;
                 box-shadow: none;
                 border: none;
-                padding-left: 1.5rem; /* 서브메뉴 들여쓰기 */
+                padding-left: 1.5rem;
                 min-width: auto;
                 border-radius: 0;
             }
-        
+
             .dropdown-menu a {
-                padding: 0.5rem 1rem; /* 모바일용 패딩 */
+                padding: 0.5rem 1rem;
             }
         }
-        
-        
-                
+
+
+
         .theme-toggle {
             background: transparent;
             border: 2px solid var(--border-color);
@@ -511,15 +510,17 @@
         }
 
         .metric-link-wrapper {
-            text-decoration: none; /* 링크 밑줄 제거 */
-            color: inherit;        /* 부모 요소의 글자색 상속 */
+            text-decoration: none;
+            color: inherit;
         }
-        
-        /* Chart Container */
+
+        /* Chart Container - Modified for two charts side by side */
         .charts-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .chart-card {
@@ -535,11 +536,20 @@
             margin-bottom: 1.5rem;
             color: var(--text-primary);
             font-weight: 600;
+            text-align: center;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Timeline Section */
 
-        
+
         .timeline-section {
             position: relative;
             padding: 5rem 0;
@@ -630,8 +640,8 @@
             margin-top: 0.5rem;
             font-weight: 600;
         }
-        
-        
+
+
         /* Research Projects Section */
         .projects-section {
             background: var(--bg-secondary);
@@ -639,8 +649,8 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
         .project-card {
@@ -746,14 +756,14 @@
 
         .publication-card {
             background: var(--bg-card);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 20px;
             box-shadow: var(--shadow-md);
-            margin-bottom: 2rem;
             border-left: 5px solid var(--pastel-green);
             position: relative;
             transition: all 0.3s ease;
             border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
         }
 
         .publication-card:hover {
@@ -824,14 +834,38 @@
             background: var(--pastel-green-dark);
         }
 
-        /* Skills Section */
+        /* Publication Tags - Hashtag Style */
+        .publication-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            font-family: var(--font-mono);
+            transition: color 0.3s ease;
+        }
+
+        .tag-method:hover {
+            color: var(--pastel-blue-dark);
+        }
+
+        .tag-material:hover {
+            color: var(--pastel-purple);
+        }
+
+        /* Skills Section - Modified */
         .skills-section {
             background: var(--bg-secondary);
         }
 
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
@@ -851,56 +885,30 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
         }
 
         .skill-item {
-            margin-bottom: 1.2rem;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
+            background: var(--bg-secondary);
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
             color: var(--text-primary);
             font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
-        .skill-percentage {
-            color: var(--pastel-green-dark);
-            font-weight: 600;
-        }
-
-        .skill-bar {
-            height: 8px;
-            background: var(--border-color);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: var(--gradient-tech);
-            border-radius: 10px;
-            width: 0;
-            transition: width 2s ease;
-            position: relative;
-        }
-
-        .skill-progress::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 20px;
-            background: rgba(255,255,255,0.3);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-20px); }
-            100% { transform: translateX(20px); }
+        .skill-item:hover {
+            background: var(--pastel-green);
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
         }
 
         /* Contact Section */
@@ -933,9 +941,9 @@
             border: 2px solid var(--pastel-green-dark);
             transition: all 0.3s ease;
             box-shadow: var(--shadow-md);
-            display: block; /* <a> 태그가 div처럼 동작하도록 */
-            text-decoration: none; /* 밑줄 제거 */
-            color: inherit; /* 텍스트 색상 상속 */            
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
 
         .contact-card:hover {
@@ -956,9 +964,9 @@
         }
 
 
-        .contact-info {
-            color: var(--text-secondary);
-        }
+        .contact-info {
+            color: var(--text-secondary);
+        }
 
 
 
@@ -966,28 +974,28 @@
         #contact a:link,
         #contact a:visited {
             text-decoration: none !important;
-            color: inherit !important; 
+            color: inherit !important;
         }
 
 
-        .contact-link-text {
-            color: var(--text-primary)!important;
-            font-weight: 600;
-            transition: text-decoration 0.3s ease;
-        }
+        .contact-link-text {
+            color: var(--text-primary)!important;
+            font-weight: 600;
+            transition: text-decoration 0.3s ease;
+        }
 
 
-        #contact a:hover .contact-link-text {
-            text-decoration: underline;
-        }
-
-
-        
+        #contact a:hover .contact-link-text {
+            text-decoration: underline;
+        }
 
 
 
 
-        
+
+
+
+
         .cv-download {
             margin-top: 2rem;
         }
@@ -1117,6 +1125,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
             .contact-grid {
                 grid-template-columns: 1fr;
             }
@@ -1183,7 +1195,7 @@
             <div class="nav-logo">HSH</div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                
+
                 <li class="dropdown">
                     <a href="#metrics" class="nav-link">Research ▾</a>
                     <ul class="dropdown-menu">
@@ -1220,7 +1232,8 @@
                 <span class="typed-text" id="typed"></span>
             </div>
             <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">View Research</a>
+                <a href="#metrics" class="btn btn-primary">View Research</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
                 <a href="#contact" class="btn btn-secondary">Contact Me</a>
             </div>
         </div>
@@ -1274,12 +1287,16 @@
 
             <div class="charts-container" data-aos="fade-up" data-aos-delay="300">
                 <div class="chart-card">
-                    <h3 class="chart-title">Research Areas Distribution</h3>
-                    <canvas id="researchChart"></canvas>
+                    <h3 class="chart-title">Research Methods Distribution</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="methodChart"></canvas>
+                    </div>
                 </div>
                 <div class="chart-card">
-                    <h3 class="chart-title">Skills Proficiency</h3>
-                    <canvas id="skillsRadar"></canvas>
+                    <h3 class="chart-title">Research Materials Distribution</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="materialChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1292,10 +1309,10 @@
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
                 Milestones in research and education
             </p>
-    
+
             <div class="timeline-container">
                 <div class="timeline-line"></div>
-    
+
                 <!-- LEFT: Ph.D. -->
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
@@ -1310,10 +1327,10 @@
                         </p>
                     </div>
                     <div class="timeline-dot"></div>
-                    <div style="width: 49%;"></div>                    
+                    <div style="width: 49%;"></div>
                 </div>
-    
-    
+
+
                 <!-- LEFT: M.S. -->
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
@@ -1330,8 +1347,8 @@
                     <div class="timeline-dot"></div>
                     <div style="width: 49%;"></div>
                 </div>
-    
-                <!-- B.S. - 왼쪽 -->
+
+                <!-- B.S. -->
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
                         <div class="timeline-date">
@@ -1347,7 +1364,7 @@
                     <div style="width: 49%;"></div>
                 </div>
 
-    
+
             </div>
         </div>
     </section>
@@ -1362,73 +1379,57 @@
             </p>
 
             <div class="projects-grid">
+                <!-- Project 1: ML-Based Structure-Property Relationship -->
                 <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-header">
-                        <div class="project-icon">🤖</div>
-                        <h3 class="project-title">AI-Driven Material Design</h3>
-                        <p class="project-subtitle">Transformer & Diffusion Models</p>
-                    </div>
-                    <div class="project-content">
-                        <div class="tech-stack">
-                            <span class="tech-badge">Transformer</span>
-                            <span class="tech-badge">Diffusion Model</span>
-                            <span class="tech-badge">EGMOF</span>
-                            <span class="tech-badge">XRD Integration</span>
-                        </div>
-                        <p class="project-description">
-                            Developing cutting-edge AI models for inverse design and synthesis of novel materials.
-                            Integrating experimental X-ray diffraction data with transformer architectures for enhanced
-                            property targeting in Metal-Organic Frameworks.
-                        </p>
-                        <a href="ai-materials.html" class="project-link">
-                            View Details →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-header" style="background: linear-gradient(135deg, #ffd3d3 0%, #ffb6b6 100%);">
                         <div class="project-icon">🔬</div>
-                        <h3 class="project-title">MOFs & Polymers</h3>
-                        <p class="project-subtitle">Structure-Property Relationships</p>
+                        <h3 class="project-title">ML-Based Structure-Property Relationship</h3>
+                        <p class="project-subtitle">Transformer Models for Materials</p>
                     </div>
                     <div class="project-content">
-                        <div class="tech-stack">
-                            <span class="tech-badge">Machine Learning</span>
-                            <span class="tech-badge">HTVS</span>
-                            <span class="tech-badge">Molecular Simulation</span>
-                            <span class="tech-badge">GNN</span>
-                        </div>
-                        <p class="project-description">
-                            Exploring complex relationships between structural characteristics and performance metrics
-                            of MOFs and polymers using sophisticated ML models. Focus on proton conductivity,
-                            ethane/ethylene separation, and multimodal property prediction.
-                        </p>
-                        <a href="mofs-polymers.html" class="project-link">
+                        <a href="project2_structure_property.html" class="project-link">
                             View Details →
                         </a>
                     </div>
                 </div>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                <!-- Project 2: AI-Driven Material Design -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-header" style="background: linear-gradient(135deg, #c7e9ff 0%, #e0c3fc 100%);">
-                        <div class="project-icon">📚</div>
-                        <h3 class="project-title">LLMs for Materials</h3>
-                        <p class="project-subtitle">Data Mining & Knowledge Extraction</p>
+                        <div class="project-icon">🤖</div>
+                        <h3 class="project-title">AI-Driven Material Design</h3>
+                        <p class="project-subtitle">Generative Models for Materials</p>
                     </div>
                     <div class="project-content">
-                        <div class="tech-stack">
-                            <span class="tech-badge">LLMs</span>
-                            <span class="tech-badge">NLP</span>
-                            <span class="tech-badge">Data Mining</span>
-                            <span class="tech-badge">Literature Analysis</span>
-                        </div>
-                        <p class="project-description">
-                            Leveraging Large Language Models to automatically collect and analyze vast amounts of
-                            material properties and synthesis condition data from scientific literature.
-                            Building comprehensive datasets for MOFs and other advanced materials.
-                        </p>
-                        <a href="llm-materials.html" class="project-link">
+                        <a href="project3_ai_design.html" class="project-link">
+                            View Details →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Data Mining & LLMs -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-header" style="background: linear-gradient(135deg, #a8e6cf 0%, #c7e9ff 100%);">
+                        <div class="project-icon">📚</div>
+                        <h3 class="project-title">Data Mining & Large Language Models</h3>
+                        <p class="project-subtitle">LLMs for Materials Science</p>
+                    </div>
+                    <div class="project-content">
+                        <a href="project4_data_mining.html" class="project-link">
+                            View Details →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Multiscale Simulation -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-header" style="background: linear-gradient(135deg, #fff3b8 0%, #ffd3d3 100%);">
+                        <div class="project-icon">⚛️</div>
+                        <h3 class="project-title">Multiscale Simulation</h3>
+                        <p class="project-subtitle">DFT & Molecular Dynamics</p>
+                    </div>
+                    <div class="project-content">
+                        <a href="project5_multiscale.html" class="project-link">
                             View Details →
                         </a>
                     </div>
@@ -1444,7 +1445,7 @@
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
           Peer-reviewed research and works in preparation
         </p>
-    
+
         <!-- 13 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="100">
           <div class="publication-header compact">
@@ -1455,8 +1456,13 @@
             </div>
             <span class="impact-badge badge-muted">In preparation</span>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#Data Mining & LLM</span>
+            <span class="tag tag-method">#Transformer</span>
+            <span class="tag tag-material">#MOF</span>
+          </div>
         </div>
-    
+
         <!-- 12 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="120">
           <div class="publication-header compact">
@@ -1467,8 +1473,14 @@
             </div>
             <span class="impact-badge badge-muted">In preparation</span>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#Diffusion Model</span>
+            <span class="tag tag-method">#Transformer</span>
+            <span class="tag tag-method">#RASPA</span>
+            <span class="tag tag-material">#MOF</span>
+          </div>
         </div>
-    
+
         <!-- 11 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="140">
           <div class="publication-header compact">
@@ -1479,8 +1491,14 @@
             </div>
             <span class="impact-badge badge-muted">Accepted</span>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#LAMMPS</span>
+            <span class="tag tag-method">#Gaussian</span>
+            <span class="tag tag-material">#Inorganic Crystals</span>
+            <span class="tag tag-material">#Organic Molecules</span>
+          </div>
         </div>
-    
+
         <!-- 10 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="160">
           <div class="publication-header compact">
@@ -1491,8 +1509,13 @@
             </div>
             <a href="https://doi.org/10.1002/adma.202508217" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#LAMMPS</span>
+            <span class="tag tag-material">#Inorganic Crystals</span>
+            <span class="tag tag-material">#Organic Molecules</span>
+          </div>
         </div>
-    
+
         <!-- 9 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="180">
           <div class="publication-header compact">
@@ -1503,8 +1526,13 @@
             </div>
             <a href="https://doi.org/10.1021/jacs.4c11085" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#Data Mining & LLM</span>
+            <span class="tag tag-method">#Scikit-learn</span>
+            <span class="tag tag-material">#MOF</span>
+          </div>
         </div>
-    
+
         <!-- 8 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="200">
           <div class="publication-header compact">
@@ -1515,8 +1543,14 @@
             </div>
             <a href="https://doi.org/10.1021/acs.chemmater.4c02368" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#Data Mining & LLM</span>
+            <span class="tag tag-method">#Transformer</span>
+            <span class="tag tag-method">#Scikit-learn</span>
+            <span class="tag tag-material">#MOF</span>
+          </div>
         </div>
-    
+
         <!-- 7 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="220">
           <div class="publication-header compact">
@@ -1527,8 +1561,12 @@
             </div>
             <a href="https://doi.org/10.1021/acsnano.4c03168" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#VASP</span>
+            <span class="tag tag-material">#Inorganic Crystals</span>
+          </div>
         </div>
-    
+
         <!-- 6 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="240">
           <div class="publication-header compact">
@@ -1539,8 +1577,13 @@
             </div>
             <a href="https://doi.org/10.1021/acsami.4c01207" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#Transformer</span>
+            <span class="tag tag-method">#GNN</span>
+            <span class="tag tag-material">#Polymer</span>
+          </div>
         </div>
-    
+
         <!-- 5 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="260">
           <div class="publication-header compact">
@@ -1551,8 +1594,12 @@
             </div>
             <a href="https://doi.org/10.1039/D3TA06197C" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#RASPA</span>
+            <span class="tag tag-material">#MOF</span>
+          </div>
         </div>
-    
+
         <!-- 4 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="280">
           <div class="publication-header compact">
@@ -1563,20 +1610,30 @@
             </div>
             <a href="https://doi.org/10.1021/acs.jcim.3c00935" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#Diffusion Model</span>
+            <span class="tag tag-method">#VASP</span>
+            <span class="tag tag-material">#Inorganic Crystals</span>
+          </div>
         </div>
-    
+
         <!-- 3 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="300">
           <div class="publication-header compact">
             <div>
               <h3 class="publication-title"><span class="pub-num">3.</span> Super Proton Conductivity Through Control of Hydrogen-Bonding Networks in Flexible Metal–Organic Frameworks</h3>
-              <p class="publication-authors">N.H. Kwon, S. Han, J. Kim, E.S. Cho*</p>
+              <p class="publication-authors">N. H. Kwon, S. Han, J. Kim, E.S. Cho*</p>
               <p class="publication-journal">Small, 2301122, 2023</p>
             </div>
             <a href="https://doi.org/10.1002/smll.202301122" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#LAMMPS</span>
+            <span class="tag tag-method">#RASPA</span>
+            <span class="tag tag-material">#MOF</span>
+          </div>
         </div>
-    
+
         <!-- 2 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="320">
           <div class="publication-header compact">
@@ -1587,8 +1644,12 @@
             </div>
             <a href="https://doi.org/10.1021/acssensors.2c02813" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#CNN</span>
+            <span class="tag tag-material">#Biological Cells</span>
+          </div>
         </div>
-    
+
         <!-- 1 -->
         <div class="publication-card small" data-aos="fade-up" data-aos-delay="340">
           <div class="publication-header compact">
@@ -1599,8 +1660,13 @@
             </div>
             <a href="https://doi.org/10.1021/acsomega.2c07517" target="_blank" class="impact-badge doi-link">View Paper →</a>
           </div>
+          <div class="publication-tags">
+            <span class="tag tag-method">#NLP</span>
+            <span class="tag tag-method">#RASPA</span>
+            <span class="tag tag-material">#MOF</span>
+          </div>
         </div>
-    
+
       </div>
     </section>
 
@@ -1610,7 +1676,7 @@
                 <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
                     Sharing research at conferences and symposiums
                 </p>
-        
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="200">
                     <div class="publication-header compact">
                         <div>
@@ -1620,7 +1686,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="220">
                     <div class="publication-header compact">
                         <div>
@@ -1630,7 +1696,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="240">
                     <div class="publication-header compact">
                         <div>
@@ -1640,7 +1706,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="260">
                     <div class="publication-header compact">
                         <div>
@@ -1650,7 +1716,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="280">
                     <div class="publication-header compact">
                         <div>
@@ -1660,7 +1726,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="300">
                     <div class="publication-header compact">
                         <div>
@@ -1670,7 +1736,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="320">
                     <div class="publication-header compact">
                         <div>
@@ -1680,7 +1746,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="340">
                     <div class="publication-header compact">
                         <div>
@@ -1690,7 +1756,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="360">
                     <div class="publication-header compact">
                         <div>
@@ -1700,7 +1766,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="380">
                     <div class="publication-header compact">
                         <div>
@@ -1710,7 +1776,7 @@
                         </div>
                     </div>
                 </div>
-    
+
             </div>
         </section>
 
@@ -1720,7 +1786,7 @@
                     <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
                         Recognition for academic and research excellence
                     </p>
-            
+
                     <div class="publication-card small" data-aos="fade-up" data-aos-delay="200">
                         <div class="publication-header compact">
                             <div>
@@ -1730,7 +1796,7 @@
                             </div>
                         </div>
                     </div>
-        
+
                     <div class="publication-card small" data-aos="fade-up" data-aos-delay="300">
                         <div class="publication-header compact">
                             <div>
@@ -1742,14 +1808,14 @@
                     </div>
                 </div>
             </section>
-    
+
     <section id="experience" class="metrics-section">
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">Experience</h2>
                 <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
                     Industry and research experience
                 </p>
-        
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="200">
                     <div class="publication-header compact">
                         <div>
@@ -1759,7 +1825,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="publication-card small" data-aos="fade-up" data-aos-delay="300">
                     <div class="publication-header compact">
                         <div>
@@ -1771,14 +1837,14 @@
                 </div>
             </div>
         </section>
-    
+
         <section id="patents" class="publications-section">
                 <div class="container">
                     <h2 class="section-title" data-aos="fade-up">Patents</h2>
                     <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
                         Intellectual property and contributions
                     </p>
-            
+
                     <div class="publication-card small" data-aos="fade-up" data-aos-delay="200">
                         <div class="publication-header compact">
                             <div>
@@ -1790,7 +1856,7 @@
                     </div>
                 </div>
             </section>
-    
+
 
 
     <!-- Skills Section -->
@@ -1806,41 +1872,12 @@
                     <h3 class="skill-category-title">
                         🔬 Molecular Simulation
                     </h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>VASP (DFT)</span>
-                            <span class="skill-percentage">90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>LAMMPS (MD)</span>
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>RASPA</span>
-                            <span class="skill-percentage">88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="88"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Gaussian</span>
-                            <span class="skill-percentage">80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80"></div>
-                        </div>
+                    <div class="skill-list">
+                        <div class="skill-item">VASP (DFT)</div>
+                        <div class="skill-item">LAMMPS (MD)</div>
+                        <div class="skill-item">RASPA</div>
+                        <div class="skill-item">Gaussian</div>
+                        <div class="skill-item">Materials Studio</div>
                     </div>
                 </div>
 
@@ -1848,41 +1885,14 @@
                     <h3 class="skill-category-title">
                         🤖 Machine Learning
                     </h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Transformer Models</span>
-                            <span class="skill-percentage">95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Graph Neural Networks</span>
-                            <span class="skill-percentage">88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="88"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Diffusion Models</span>
-                            <span class="skill-percentage">82%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="82"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Scikit-learn</span>
-                            <span class="skill-percentage">90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
-                        </div>
+                    <div class="skill-list">
+                        <div class="skill-item">Transformer Models</div>
+                        <div class="skill-item">Diffusion Models</div>
+                        <div class="skill-item">Graph Neural Networks (GNN)</div>
+                        <div class="skill-item">Convolutional Neural Networks (CNN)</div>
+                        <div class="skill-item">Natural Language Processing (NLP)</div>
+                        <div class="skill-item">Scikit-learn</div>
+                        <div class="skill-item">Data Mining & LLM</div>
                     </div>
                 </div>
 
@@ -1890,41 +1900,15 @@
                     <h3 class="skill-category-title">
                         💻 Programming & Tools
                     </h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python</span>
-                            <span class="skill-percentage">95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>MATLAB</span>
-                            <span class="skill-percentage">80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Shell Scripting</span>
-                            <span class="skill-percentage">75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="75"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Visualization Tools</span>
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
+                    <div class="skill-list">
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">MATLAB</div>
+                        <div class="skill-item">Shell Scripting</div>
+                        <div class="skill-item">Materials Studio</div>
+                        <div class="skill-item">VMD</div>
+                        <div class="skill-item">Avogadro</div>
+                        <div class="skill-item">VESTA</div>
+                        <div class="skill-item">OVITO</div>
                     </div>
                 </div>
             </div>
@@ -1942,7 +1926,7 @@
             </p>
 
             <div class="contact-grid" data-aos="fade-up" data-aos-delay="200">
-                
+
                 <a href="mailto:sisifhro@kaist.ac.kr" class="contact-card">
                     <div class="contact-icon">📧</div>
                     <h3 class="contact-title">Email</h3>
@@ -1966,7 +1950,7 @@
 
                 <a href="https://github.com/seunghhs" target="_blank" class="contact-card">
                     <div class="contact-icon">
-                        <img src="img/github_img.png" alt="GitHub" style="width: 30px; height: 30px;"
+                        <img src="images/github_img.png" alt="GitHub" style="width: 30px; height: 30px;"
                              onerror="this.src='https://placehold.co/30x30/e2e8f0/1e293b?text=GH'">
                     </div>
                     <h3 class="contact-title">GitHub</h3>
@@ -1976,10 +1960,10 @@
                         </span>
                     </p>
                 </a>
-                
+
                 <a href="https://www.linkedin.com/in/seunghee-han-145687300/" target="_blank" class="contact-card">
                     <div class="contact-icon">
-                        <img src="img/linkedin_img.png" alt="LinkedIn" style="width: 30px; height: 30px;"
+                        <img src="images/linkedin_img.png" alt="LinkedIn" style="width: 30px; height: 30px;"
                              onerror="this.src='https://placehold.co/30x30/e2e8f0/1e293b?text=LI'">
                     </div>
                     <h3 class="contact-title">LinkedIn</h3>
@@ -1999,7 +1983,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -2073,8 +2057,7 @@
         // Active Navigation Link
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
-        
-        // ▼▼▼ 이 함수를 통째로 교체하세요 ▼▼▼
+
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
@@ -2083,27 +2066,22 @@
                     current = section.getAttribute('id');
                 }
             });
-        
-            // (추가) Research 하위 섹션 ID 목록
+
             const researchSubSections = ['publications', 'presentations', 'awards', 'experience', 'patents'];
-        
+
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 const linkHref = link.getAttribute('href').slice(1);
-        
-                // 1. 현재 섹션과 링크가 일치하면 활성화
+
                 if (linkHref === current) {
                     link.classList.add('active');
                 }
-                
-                // 2. (추가) 현재 섹션이 Research 하위 섹션 중 하나라면,
-                //    메인 "Research" 링크(href="#metrics")에도 active 클래스 추가
+
                 if (linkHref === 'metrics' && researchSubSections.includes(current)) {
                     link.classList.add('active');
                 }
             });
         });
-        // ▲▲▲ 여기까지 교체 ▲▲▲
 
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
@@ -2153,22 +2131,6 @@
             counterObserver.observe(counter);
         });
 
-        // Skill Progress Bars Animation
-        const skillBars = document.querySelectorAll('.skill-progress');
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const width = entry.target.getAttribute('data-width');
-                    entry.target.style.width = width + '%';
-                    skillObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        skillBars.forEach(bar => {
-            skillObserver.observe(bar);
-        });
-
         // Particles Animation
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 50; i++) {
@@ -2182,68 +2144,180 @@
             particlesContainer.appendChild(particle);
         }
 
-        // Research Areas Chart
-        const researchCtx = document.getElementById('researchChart').getContext('2d');
-        const researchChart = new Chart(researchCtx, {
+        // Method Distribution Chart with hierarchical legend
+        const methodCtx = document.getElementById('methodChart').getContext('2d');
+
+        // Method categories and their data
+        const mlMethods = [
+            { name: 'Transformer', value: 23.5, color: 'rgba(199, 233, 255, 0.8)' },
+            { name: 'Diffusion Model', value: 13.5, color: 'rgba(168, 230, 207, 0.8)' },
+            { name: 'Data Mining & LLM', value: 12.5, color: 'rgba(224, 195, 252, 0.8)' },
+            { name: 'CNN', value: 10.0, color: 'rgba(255, 211, 211, 0.8)' },
+            { name: 'NLP', value: 5.0, color: 'rgba(166, 216, 244, 0.8)' },
+            { name: 'GNN', value: 2.0, color: 'rgba(200, 220, 255, 0.8)' },
+            { name: 'Scikit-learn', value: 1.5, color: 'rgba(127, 194, 155, 0.8)' }
+        ];
+
+        const msMethods = [
+            { name: 'RASPA', value: 16.0, color: 'rgba(255, 243, 184, 0.8)' },
+            { name: 'LAMMPS', value: 9.8, color: 'rgba(127, 205, 187, 0.8)' },
+            { name: 'VASP', value: 6.0, color: 'rgba(255, 182, 182, 0.8)' },
+            { name: 'Gaussian', value: 0.3, color: 'rgba(230, 200, 250, 0.8)' }
+        ];
+
+        const allMethods = [...mlMethods, ...msMethods];
+        const mlCount = mlMethods.length;
+
+        const methodChart = new Chart(methodCtx, {
             type: 'doughnut',
             data: {
-                labels: ['MOFs Design', 'Machine Learning', 'LLMs & Data Mining', 'Molecular Simulation', 'Polymers'],
+                labels: allMethods.map(m => m.name),
                 datasets: [{
-                    data: [30, 35, 15, 15, 5],
-                    backgroundColor: [
-                        'rgba(199, 233, 255, 0.8)',
-                        'rgba(168, 230, 207, 0.8)',
-                        'rgba(224, 195, 252, 0.8)',
-                        'rgba(255, 211, 211, 0.8)',
-                        'rgba(255, 243, 184, 0.8)'
-                    ],
-                    borderWidth: 0
+                    data: allMethods.map(m => m.value),
+                    backgroundColor: allMethods.map(m => m.color),
+                    borderWidth: 2,
+                    borderColor: '#fff'
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        position: 'bottom',
+                        position: 'right',
                         labels: {
-                            color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary')
+                            color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary'),
+                            padding: 6,
+                            font: {
+                                size: 10
+                            },
+                            generateLabels: function(chart) {
+                                const data = chart.data;
+                                const labels = [];
+
+                                // Machine Learning category header
+                                labels.push({
+                                    text: 'Machine Learning',
+                                    fillStyle: 'transparent',
+                                    strokeStyle: 'transparent',
+                                    lineWidth: 0,
+                                    fontColor: getComputedStyle(document.documentElement).getPropertyValue('--text-primary'),
+                                    font: {
+                                        size: 14,
+                                        weight: 'bold'
+                                    },
+                                    hidden: false,
+                                    index: -1
+                                });
+
+                                // ML methods
+                                for (let i = 0; i < mlCount; i++) {
+                                    labels.push({
+                                        text: '  ' + data.labels[i],
+                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                        strokeStyle: data.datasets[0].backgroundColor[i],
+                                        lineWidth: 0,
+                                        hidden: false,
+                                        index: i
+                                    });
+                                }
+
+                                // Molecular Simulation category header
+                                labels.push({
+                                    text: 'Molecular Simulation',
+                                    fillStyle: 'transparent',
+                                    strokeStyle: 'transparent',
+                                    lineWidth: 0,
+                                    fontColor: getComputedStyle(document.documentElement).getPropertyValue('--text-primary'),
+                                    font: {
+                                        size: 14,
+                                        weight: 'bold'
+                                    },
+                                    hidden: false,
+                                    index: -2
+                                });
+
+                                // MS methods
+                                for (let i = mlCount; i < data.labels.length; i++) {
+                                    labels.push({
+                                        text: '  ' + data.labels[i],
+                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                        strokeStyle: data.datasets[0].backgroundColor[i],
+                                        lineWidth: 0,
+                                        hidden: false,
+                                        index: i
+                                    });
+                                }
+
+                                return labels;
+                            }
+                        },
+                        onClick: function(e, legendItem, legend) {
+                            // Prevent toggling for category headers
+                            if (legendItem.index < 0) return;
+
+                            const index = legendItem.index;
+                            const chart = legend.chart;
+                            const meta = chart.getDatasetMeta(0);
+
+                            meta.data[index].hidden = !meta.data[index].hidden;
+                            chart.update();
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const index = context.dataIndex;
+                                const methodName = context.label;
+                                const value = context.parsed;
+                                const category = index < mlCount ? 'Machine Learning' : 'Molecular Simulation';
+                                return category + ' > ' + methodName + ': ' + value + '%';
+                            }
                         }
                     }
                 }
             }
         });
 
-        // Skills Radar Chart
-        const skillsCtx = document.getElementById('skillsRadar').getContext('2d');
-        const skillsRadarChart = new Chart(skillsCtx, {
-            type: 'radar',
+        // Materials Distribution Chart
+        const materialCtx = document.getElementById('materialChart').getContext('2d');
+        const materialChart = new Chart(materialCtx, {
+            type: 'doughnut',
             data: {
-                labels: ['Simulation', 'ML/AI', 'Programming', 'Research', 'Writing', 'Visualization'],
+                labels: ['MOF', 'Inorganic Crystals', 'Biological Cells', 'Polymer', 'Organic Molecules'],
                 datasets: [{
-                    label: 'Skills',
-                    data: [88, 92, 85, 90, 85, 85],
-                    backgroundColor: 'rgba(168, 230, 207, 0.2)',
-                    borderColor: 'rgba(127, 205, 187, 1)',
+                    data: [52.4, 21.4, 9.5, 9.5, 7.1],
+                    backgroundColor: [
+                        'rgba(168, 230, 207, 0.8)',
+                        'rgba(199, 233, 255, 0.8)',
+                        'rgba(255, 211, 211, 0.8)',
+                        'rgba(224, 195, 252, 0.8)',
+                        'rgba(255, 243, 184, 0.8)'
+                    ],
                     borderWidth: 2,
-                    pointBackgroundColor: 'rgba(127, 205, 187, 1)'
+                    borderColor: '#fff'
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: true,
-                scales: {
-                    r: {
-                        beginAtZero: true,
-                        max: 100,
-                        ticks: {
-                            stepSize: 20
-                        }
-                    }
-                },
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false
+                        position: 'right',
+                        labels: {
+                            color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary'),
+                            padding: 10,
+                            font: {
+                                size: 11
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
                     }
                 }
             }
@@ -2253,8 +2327,10 @@
         themeToggle.addEventListener('click', () => {
             setTimeout(() => {
                 const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-primary');
-                researchChart.options.plugins.legend.labels.color = textColor;
-                researchChart.update();
+                methodChart.options.plugins.legend.labels.color = textColor;
+                materialChart.options.plugins.legend.labels.color = textColor;
+                methodChart.update();
+                materialChart.update();
             }, 100);
         });
     </script>

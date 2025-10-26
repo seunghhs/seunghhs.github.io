@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Efficiency Material Discovery | Seunghee Han</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pastel-green: #a8e6cf;
+            --pastel-green-dark: #7fcdbb;
+            --pastel-pink: #ffd3d3;
+            --pastel-blue: #c7e9ff;
+            --pastel-blue-dark: #a6d8f4;
+            --pastel-purple: #e0c3fc;
+            --pastel-yellow: #fff3b8;
+
+            --gradient-research: linear-gradient(135deg, #a8e6cf 0%, #c7e9ff 100%);
+            --font-heading: 'IBM Plex+Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--pastel-green-dark);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        .project-header {
+            background: var(--gradient-research);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .content-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--pastel-green-dark);
+        }
+
+        .content-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-badge {
+            background: var(--pastel-blue);
+            color: var(--text-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--pastel-green);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .publication-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(168, 230, 207, 0.4);
+        }
+
+        .methodology-list {
+            margin-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .methodology-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--pastel-yellow);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--pastel-green-dark);
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="container">
+        <a href="index_new4.html" class="back-link">← Back to Main Page</a>
+
+        <div class="project-header">
+            <div class="project-icon">⚡</div>
+            <h1 class="project-title">High-Efficiency Material Discovery</h1>
+            <p class="project-subtitle">HTVS & Machine Learning Integration</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Overview</h2>
+            <p class="content-text">
+                This project focuses on accelerating advanced material discovery through the integration of
+                high-throughput virtual screening (HTVS) combined with molecular simulations, and machine learning (ML).
+                By leveraging computational screening and AI, we can identify optimal Metal-Organic Frameworks (MOFs)
+                with desired properties more efficiently than traditional experimental approaches.
+            </p>
+
+            <div class="tech-stack">
+                <span class="tech-badge">HTVS</span>
+                <span class="tech-badge">Machine Learning</span>
+                <span class="tech-badge">RASPA</span>
+                <span class="tech-badge">MOF-NET</span>
+                <span class="tech-badge">Molecular Simulation</span>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Research Highlight: Ethane/Ethylene Separation</h2>
+
+            <img src="images/1.jpeg" alt="MOF structure for ethane/ethylene separation" class="project-image">
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-top: 2rem; margin-bottom: 1rem;">
+                Design and Screening of Metal–Organic Frameworks for Ethane/Ethylene Separation
+            </h3>
+
+            <p class="content-text">
+                Separation of ethane and ethylene is considered to be industrially important for various chemical processes,
+                but their similarities make the process expensive. In this study, we integrated computational screening with
+                machine learning to find optimal metal–organic frameworks (MOFs) with high ethane/ethylene selectivity.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Key Achievement:</strong> Using our algorithm, a hypothetical MOF structure with an ideal adsorption
+                solution theory selectivity of 3.6 at 298 K and 1 bar was discovered. Furthermore, structural analysis was
+                implemented, and the full adsorption isotherm of some of the top structures was obtained.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Methodology</h2>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-bottom: 0.5rem;">
+                Machine Learning Model
+            </h3>
+            <p class="content-text">
+                The model of ML is based on MOF-NET, the artificial neural network model using the embedding technique
+                similar to Word2Vec. The selectivity data were required to train the ML model, and it can be attained
+                directly through molecular simulation.
+            </p>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-bottom: 0.5rem; margin-top: 1.5rem;">
+                Molecular Simulation Approach
+            </h3>
+            <p class="content-text">
+                In this work, selectivity was approximated in two ways:
+            </p>
+            <ul class="methodology-list">
+                <li><strong>Henry coefficient calculation</strong> - Used for ML and genetic algorithms</li>
+                <li><strong>m-GCMC calculation</strong> - For more detailed adsorption behavior analysis</li>
+            </ul>
+
+            <p class="content-text">
+                The Henry coefficient of each MOF was calculated using the Widom insertion method via RASPA,
+                enabling high-throughput screening of thousands of MOF structures.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Related Publication</h2>
+            <p class="content-text">
+                <strong>S. Han</strong>, J. Kim*<br>
+                <em>Design and Screening of Metal–Organic Frameworks for Ethane/Ethylene Separation</em><br>
+                <strong>ACS Omega</strong>, vol. 8, 4278, 2023
+            </p>
+            <a href="https://pubs.acs.org/doi/10.1021/acsomega.2c07517" class="publication-link" target="_blank">
+                View Publication →
+            </a>
+        </div>
+    </div>
+</body>
+</html>
