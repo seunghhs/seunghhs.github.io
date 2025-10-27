@@ -136,10 +136,8 @@
             width: 100%;
             max-width: 800px;
             height: auto;
-            border-radius: 15px;
             margin: 2rem auto;
             display: block;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .publication-link {
@@ -163,10 +161,10 @@
         }
 
         .highlight-box {
-            background: var(--pastel-blue);
+            background: #fef3e2;
             padding: 1.5rem;
             border-radius: 15px;
-            border-left: 4px solid var(--pastel-pink-dark);
+            border-left: 4px solid #f4a261;
             margin: 1.5rem 0;
         }
 
@@ -205,7 +203,7 @@
             <h2 class="section-title">Overview</h2>
             <p class="content-text">
                 This project focuses on elucidating complex behaviors and mechanisms within MOFs, polymers, catalysts,
-                and battery systems through density functional theory (DFT) and molecular dynamics (MD) simulations.
+                and battery systems through density functional theory (DFT), molecular dynamics (MD), and Monte Carlo (MC) simulations.
                 By employing multiscale computational approaches, we can understand material properties at the atomic
                 level and predict their macroscopic behavior.
             </p>
@@ -220,7 +218,7 @@
         </div>
 
         <div class="content-section">
-            <h2 class="section-title">DFT Simulations: Catalyst Surface Reactivity</h2>
+            <h2 class="section-title">Research Highlight 1: DFT Simulations</h2>
 
             <img src="images/5-1_dft.jpeg" alt="DFT calculations for catalysts" class="project-image">
 
@@ -267,10 +265,14 @@
                 Co–CeO₂. A larger magnitude of charge transfer in Co-doped CeO₂ would indicate a significant reinforcement
                 in the C₅H₈ adsorption and activation behavior.
             </div>
+
+            <a href="https://doi.org/10.1021/acsnano.4c03168" class="publication-link" target="_blank">
+                View Publication →
+            </a>
         </div>
 
         <div class="content-section">
-            <h2 class="section-title">Molecular Dynamics: Crosslinking Behavior</h2>
+            <h2 class="section-title">Research Highlight 2: Molecular Dynamics</h2>
 
             <img src="images/5-2_lammps.jpg" alt="MD simulations with LAMMPS" class="project-image">
 
@@ -279,10 +281,10 @@
             </h3>
 
             <p class="content-text">
-                We performed molecular dynamics (MD) simulations to investigate the effect of crosslinker chain length
-                on the crosslinking behavior. In the model, two parallel planes positioned along the top and bottom
-                represented the surfaces of two different perovskite nanocrystals (PeNCs), with only surface-bound
-                ligands included to simplify the system.
+                We performed molecular dynamics (MD) simulations using LAMMPS to investigate the effect of crosslinker
+                chain length on the crosslinking behavior. In the model, two parallel planes positioned along the top
+                and bottom represented the surfaces of two different perovskite nanocrystals (PeNCs), with only
+                surface-bound ligands included to simplify the system.
             </p>
 
             <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
@@ -311,10 +313,14 @@
                 efficiency of 0.167. In contrast, longer-chain crosslinkers such as ODT (1.19 nm) and DDT (1.23 nm)
                 exhibited higher crosslinking efficiencies of 0.357 and 0.64, respectively.
             </div>
+
+            <a href="https://doi.org/10.1002/adma.202508217" class="publication-link" target="_blank">
+                View Publication →
+            </a>
         </div>
 
         <div class="content-section">
-            <h2 class="section-title">Monte Carlo Simulations: MOF Adsorption</h2>
+            <h2 class="section-title">Research Highlight 3: Adsorption in MOFs</h2>
 
             <img src="images/5-3_raspa.jpg" alt="RASPA simulations for MOFs" class="project-image">
 
@@ -332,8 +338,8 @@
                 Grand Canonical Monte Carlo (GCMC) Simulations
             </h3>
             <p class="content-text">
-                The amount of introduced imidazole molecules through the Grand Canonical Monte Carlo simulation is
-                3.52 and 9.81 per Fe clusters for Im@MIL-88B-SB and Im@MIL-88B-LB, respectively.
+                Using RASPA, the amount of introduced imidazole molecules through the Grand Canonical Monte Carlo
+                simulation is 3.52 and 9.81 per Fe clusters for Im@MIL-88B-SB and Im@MIL-88B-LB, respectively.
             </p>
 
             <p class="content-text">
@@ -344,12 +350,12 @@
             </p>
 
             <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
-                NVT Simulations: Water-Imidazole Interactions
+                NVT Simulations (MD): Water-Imidazole Interactions
             </h3>
             <p class="content-text">
                 Next, the water–imidazole adsorption behaviors in Im@MIL-88B-SB and Im@MIL-88B-LB were obtained through
-                the NVT simulations, in which the number of adsorbed water molecules was set to be in accordance with
-                the experimental results.
+                the NVT simulations using LAMMPS, in which the number of adsorbed water molecules was set to be in
+                accordance with the experimental results.
             </p>
 
             <div class="highlight-box">
@@ -359,6 +365,10 @@
                 of proton carriers. The hydrogen-bonding numbers for each atom of proton carriers in Im@MIL-88B-LB are
                 increased to more than one, contributing to the formation of continuous hydrogen-bonding networks.
             </div>
+
+            <a href="https://doi.org/10.1002/smll.202301122" class="publication-link" target="_blank">
+                View Publication →
+            </a>
         </div>
 
         <div class="content-section">

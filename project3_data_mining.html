@@ -135,10 +135,8 @@
             width: 100%;
             max-width: 800px;
             height: auto;
-            border-radius: 15px;
             margin: 2rem auto;
             display: block;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .publication-link {
@@ -179,7 +177,7 @@
         }
 
         .contribution-box {
-            background: var(--pastel-purple);
+            background: #e8f4f8;
             padding: 1.5rem;
             border-radius: 15px;
             margin: 1.5rem 0;
@@ -199,18 +197,25 @@
         <div class="content-section">
             <h2 class="section-title">Overview</h2>
             <p class="content-text">
-                This project involves developing methodologies that leverage Large Language Models (LLMs) to automatically
-                collect and analyze vast amounts of material properties and synthesis condition data from scientific
-                literature. By harnessing the power of advanced language models, we can efficiently extract structured
-                information from unstructured text, creating comprehensive databases that accelerate materials research.
+                This project focuses on developing comprehensive databases of material properties through various data
+                mining and extraction methodologies. By systematically collecting data from scientific literature using
+                both manual extraction techniques and Large Language Models (LLMs), we create structured datasets that
+                were previously difficult to obtain. This work makes experimental material data more accessible and
+                accelerates materials research by providing ready-to-use databases for machine learning applications.
+            </p>
+
+            <p class="content-text">
+                A key achievement of this project is making it easier to obtain experimental data for materials that
+                were previously challenging to access, enabling more comprehensive analysis and property predictions.
             </p>
 
             <div class="tech-stack">
+                <span class="tech-badge">Data Mining</span>
                 <span class="tech-badge">LLMs</span>
                 <span class="tech-badge">GPT</span>
-                <span class="tech-badge">Data Mining</span>
-                <span class="tech-badge">Literature Analysis</span>
-                <span class="tech-badge">Llama</span>
+               <span class="tech-badge">Llama</span>
+                <span class="tech-badge">MatGD</span>
+
             </div>
         </div>
 
@@ -254,6 +259,10 @@
                 <strong>Database Scale:</strong> Through this meticulous refinement procedure, we developed a database
                 for the proton conductivity of MOFs with a total of 3388 data points, 172 DOIs and 248 CIF files.
             </div>
+
+            <a href="https://doi.org/10.1021/acs.chemmater.4c02368" class="publication-link" target="_blank">
+                View Publication →
+            </a>
         </div>
 
         <div class="content-section">
@@ -312,18 +321,47 @@
                 and demonstrates the power of LLMs in automating materials data collection.
             </div>
 
-            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
-                Model Comparison
-            </h3>
-            <p class="content-text">
-                When comparing the performance of GPT models with open-source alternatives like Llama, the latter exhibited
-                lower accuracy. I contributed to fine-tuning the Llama model to improve its performance in this specific
-                materials science domain.
-            </p>
+            <div class="contribution-box">
+                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">My Contribution:</h4>
+                <p class="content-text" style="margin-bottom: 0;">
+                    When comparing the performance of GPT models with open-source alternatives like Llama, the latter exhibited
+                    lower accuracy. I contributed to fine-tuning the Llama model to improve its performance in this specific
+                    materials science domain.
+                </p>
+            </div>
 
             <a href="https://pubs.acs.org/doi/10.1021/jacs.4c11085" class="publication-link" target="_blank">
                 View Publication →
             </a>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Research Highlight 3: Experimental X-ray Diffraction Integration</h2>
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
+                Experimental X-ray Diffraction Integrated Transformer
+            </h3>
+
+            <p class="content-text">
+                This ongoing research focuses on integrating experimental X-ray diffraction data with transformer
+                architectures to enhance the prediction and analysis of material properties. By combining experimental
+                characterization techniques with advanced machine learning models, we aim to bridge the gap between
+                theoretical predictions and experimental observations.
+            </p>
+
+            <p class="content-text">
+                The integration of XRD data with transformer models represents a novel approach in materials informatics,
+                potentially enabling more accurate structure-property relationships and accelerating the discovery of
+                new materials with desired characteristics.
+            </p>
+
+            <div style="margin-top: 1.5rem;">
+                <p class="content-text">
+                    <strong>S. Han#</strong>, J. Lee#, J. Kim*<br>
+                    <em>Experimental X-ray Diffraction Integrated Transformer</em><br>
+                    <strong>In preparation</strong>
+                </p>
+            </div>
         </div>
 
         <div class="content-section">

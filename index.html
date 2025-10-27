@@ -649,9 +649,10 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(4, 280px);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .project-card {
