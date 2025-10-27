@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven Material Design | Seunghee Han</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pastel-green: #a8e6cf;
+            --pastel-green-dark: #7fcdbb;
+            --pastel-pink: #ffd3d3;
+            --pastel-blue: #c7e9ff;
+            --pastel-blue-dark: #a6d8f4;
+            --pastel-purple: #e0c3fc;
+            --pastel-yellow: #fff3b8;
+
+            --gradient-research: linear-gradient(135deg, #c7e9ff 0%, #e0c3fc 100%);
+            --font-heading: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--pastel-blue-dark);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        .project-header {
+            background: var(--gradient-research);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .content-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--pastel-purple);
+        }
+
+        .content-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-badge {
+            background: var(--pastel-purple);
+            color: var(--text-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--pastel-purple);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .publication-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(224, 195, 252, 0.4);
+        }
+
+        .highlight-box {
+            background: var(--pastel-yellow);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--pastel-purple);
+            margin: 1.5rem 0;
+        }
+
+        .methodology-list {
+            margin-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .methodology-list li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Main Page</a>
+
+        <div class="project-header">
+            <div class="project-icon">🤖</div>
+            <h1 class="project-title">AI-Driven Material Design</h1>
+            <p class="project-subtitle">Generative Models for Materials</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Overview</h2>
+            <p class="content-text">
+                This project focuses on inverse design and synthesis of novel materials applying generative models,
+                such as diffusion models and transformer models. By leveraging advanced AI architectures, we can
+                generate materials with desired compositions and properties, significantly accelerating the material
+                discovery process beyond traditional trial-and-error approaches.
+            </p>
+
+            <div class="tech-stack">
+                <span class="tech-badge">Diffusion Model</span>
+                <span class="tech-badge">CDVAE</span>
+                <span class="tech-badge">DFT</span>
+                <span class="tech-badge">Inverse Design</span>
+                <span class="tech-badge">VASP</span>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Research Highlight: Inorganic Crystal Generation</h2>
+
+            <img src="images/3-1_inorganic.jpeg" alt="Inorganic Crystal Generation with Diffusion Model" class="project-image">
+            <img src="images/3-2_inorganic.jpeg" alt="Generated Crystal Structures" class="project-image">
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
+                Design of New Inorganic Crystals with the Desired Composition Using Deep Learning
+            </h3>
+
+            <p class="content-text">
+                New solid-state materials have been discovered using various approaches from atom substitution in
+                density functional theory (DFT) to generative models in machine learning. Recently, generative models
+                have shown promising performance in finding new materials. Crystal generation with deep learning has
+                been applied in various methods to discover new crystals. However, most generative models can only be
+                applied to materials with specific elements or generate structures with random compositions.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Key Innovation:</strong> We developed a model that can generate crystals with desired compositions
+                based on a crystal diffusion variational autoencoder (CDVAE).
+            </div>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                Methodology & Results
+            </h3>
+            <p class="content-text">
+                We generated crystal structures for 14 compositions of three types of materials in different applications.
+                The generated structures were further stabilized using DFT calculations. We found the most stable structures
+                in the existing database for all but one composition, even though eight compositions among them were not in
+                the data set trained in a crystal diffusion variational autoencoder.
+            </p>
+
+            <p class="content-text">
+                This substantiates the prospect of the generation of an extensive range of compositions. Finally, 205 unique
+                new crystal materials with energy above hull &lt;100 meV/atom were generated.
+            </p>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                Comparison with Traditional Methods
+            </h3>
+            <p class="content-text">
+                We compared the average formation energy of the crystals generated from five compositions, two of which
+                were hypothetical, with that of traditional methods like atom substitution and a generative model.
+                The generated structures had lower formation energy than those of other models, except for one composition.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Impact:</strong> These results demonstrate that our approach can be applied stably in various
+                fields to design stable inorganic materials based on machine learning.
+            </div>
+
+            <a href="https://pubs.acs.org/doi/10.1021/acs.jcim.3c01142" class="publication-link" target="_blank">
+                View Publication →
+            </a>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Ongoing Research: MOF Generation with EGMOF</h2>
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
+                EGMOF: Efficient Generation of Metal-Organic Frameworks for Enhanced Property Targeting
+            </h3>
+
+            <p class="content-text">
+                Building upon our success with inorganic crystal generation, we are developing a diffusion-transformer
+                model specifically designed for Metal-Organic Frameworks (MOFs). This work combines the strengths of
+                diffusion models and transformer architectures to enable efficient generation of MOF structures with
+                targeted properties.
+            </p>
+
+            <div class="tech-stack">
+                <span class="tech-badge">Diffusion Model</span>
+                <span class="tech-badge">Transformer</span>
+                <span class="tech-badge">RASPA</span>
+                <span class="tech-badge">Materials Studio</span>
+            </div>
+
+            <p class="content-text" style="font-style: italic; margin-top: 1.5rem;">
+                This research is currently in preparation for publication.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Related Publications</h2>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    <strong>S. Han</strong>, J. Lee, S. Han, S. Moosavi, J. Kim, C. Park*<br>
+                    <em>Design of New Inorganic Crystals with the Desired Composition Using Deep Learning</em><br>
+                    <strong>Journal of Chemical Information and Modeling</strong>, vol. 63, 5755, 2023
+                </p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    <strong>S. Han#</strong>, Y. Kang#, T. Bae, V. Bernales, A. Guzik*, J. Kim*<br>
+                    <em>EGMOF: Efficient Generation of Metal-Organic Frameworks for Enhanced Property Targeting with Diffusion-Transformer Model</em><br>
+                    <strong>In preparation</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

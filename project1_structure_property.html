@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML-Based Structure-Property Relationship | Seunghee Han</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pastel-green: #a8e6cf;
+            --pastel-green-dark: #7fcdbb;
+            --pastel-pink: #ffd3d3;
+            --pastel-pink-dark: #ffb6b6;
+            --pastel-blue: #c7e9ff;
+            --pastel-blue-dark: #a6d8f4;
+            --pastel-purple: #e0c3fc;
+            --pastel-yellow: #fff3b8;
+
+            --gradient-research: linear-gradient(135deg, #ffd3d3 0%, #ffb6b6 100%);
+            --font-heading: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--pastel-pink-dark);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        .project-header {
+            background: var(--gradient-research);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .content-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--pastel-pink-dark);
+        }
+
+        .content-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-badge {
+            background: var(--pastel-pink);
+            color: var(--text-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--pastel-pink);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            margin-right: 1rem;
+        }
+
+        .publication-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 211, 211, 0.4);
+        }
+
+        .highlight-box {
+            background: var(--pastel-yellow);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--pastel-pink-dark);
+            margin: 1.5rem 0;
+        }
+
+        .subsection {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--border-color);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Main Page</a>
+
+        <div class="project-header">
+            <div class="project-icon">🔬</div>
+            <h1 class="project-title">ML-Based Structure-Property Relationship</h1>
+            <p class="project-subtitle">Transformer Models for Materials</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Overview</h2>
+            <p class="content-text">
+                This project focuses on exploring complex relationships between the structural characteristics and
+                performance metrics of materials using sophisticated machine learning models, particularly Transformer models.
+                By leveraging advanced deep learning architectures, we can predict material properties more accurately
+                and gain insights into structure-property relationships that are difficult to discern through
+                traditional methods.
+            </p>
+
+            <div class="tech-stack">
+                <span class="tech-badge">Transformer</span>
+                <span class="tech-badge">Multimodal</span>
+                <span class="tech-badge">Transfer Learning</span>
+                <span class="tech-badge">Deep Learning</span>
+                <span class="tech-badge">ChemBERT</span>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Research Highlight 1: Polymer Property Prediction</h2>
+
+            <img src="images/2-1_polymer.jpeg" alt="Multimodal Transformer for Polymers" class="project-image">
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
+                Multimodal Transformer for Property Prediction in Polymers
+            </h3>
+
+            <p class="content-text">
+                In this work, we designed a multimodal transformer that combines both the Simplified Molecular Input Line
+                Entry System (SMILES) and molecular graph representations to enhance the prediction of polymer properties.
+                Three models with different embeddings (SMILES, SMILES + monomer, and SMILES + dimer) were employed to
+                assess the performance of incorporating multimodal features into transformer architectures.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Key Achievement:</strong> Fine-tuning results across five properties (i.e., density,
+                glass-transition temperature (Tg), melting temperature (Tm), volume resistivity, and conductivity)
+                demonstrated that the multimodal transformer with both the SMILES and the dimer configuration as inputs
+                outperformed the transformer using only SMILES across all five properties.
+            </div>
+
+            <p class="content-text">
+                Furthermore, our model facilitates in-depth analysis by examining attention scores, providing deeper
+                insights into the relationship between the deep learning model and the polymer attributes.
+            </p>
+
+            <a href="https://pubs.acs.org/doi/10.1021/acsami.4c01207" class="publication-link" target="_blank">
+                View Publication →
+            </a>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Research Highlight 2: Proton Conductivity Prediction</h2>
+
+            <img src="images/2-2_proton.jpeg" alt="Proton Conductivity ML Model" class="project-image">
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
+                Machine Learning-Based Prediction of Proton Conductivity in MOFs
+            </h3>
+
+            <p class="content-text">
+                Recently, metal–organic frameworks (MOFs) have demonstrated their potential as solid-state electrolytes
+                in proton exchanged membrane fuel cells. However, the number of MOFs reported to exhibit proton conductivity
+                remains limited, and the mechanisms underlying this phenomenon have not been fully elucidated, complicating
+                the design of proton-conductive MOFs.
+            </p>
+
+            <p class="content-text">
+                In response, we developed a comprehensive database of proton-conductive MOFs and applied machine learning
+                techniques to predict their proton conductivity. Our approach included the construction of both
+                descriptor-based and transformer-based models.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Key Achievement:</strong> The transformer-based transfer learning (Freeze) model performed the
+                best with a mean absolute error (MAE) of 0.91, suggesting that the proton conductivity of MOFs can be
+                estimated within 1 order of magnitude using this model.
+            </div>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                Model Architecture
+            </h3>
+            <p class="content-text">
+                For transfer learning, we utilized two pretrained transformer models: the MOF Transformer and ChemBERTa.
+                The MOF Transformer is designed to account for both local and global features through atom-based graph
+                embeddings and energy grid embeddings, enabling it to predict various properties across different MOF
+                structures. ChemBERTa is a pretrained model for the Simplified Molecular Input Line Entry System (SMILES)
+                of 77 million chemical structures from PubChem, which is suitable for understanding guest molecules
+                obtained from PubChem.
+            </p>
+
+            <p class="content-text">
+                We utilized the CLS token from each pretrained transformer model. Temperature (T) and relative humidity
+                (RH) were separately embedded and then combined through element-wise addition with the CLS token from
+                each transformer. In our study, we explored two distinct methods: one where all layers of the transformer
+                models were trained (unfreezing and fine-tuning) and the other where the layers up to the CLS token were
+                frozen, preventing them from being updated during training (freeze).
+            </p>
+
+            <p class="content-text">
+                Additionally, we employed feature importance and principal component analysis to explore the factors
+                influencing the proton conductivity. The insights gained from our database and machine learning model
+                are expected to facilitate the targeted design of proton-conductive MOFs.
+            </p>
+
+            <a href="https://pubs.acs.org/doi/10.1021/acs.chemmater.4c02368" class="publication-link" target="_blank">
+                View Publication →
+            </a>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Related Publications</h2>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    <strong>S. Han</strong>, Y. Kang, H. Park, J. Yi, G. Park, J. Kim*<br>
+                    <em>Multimodal Transformer for Property Prediction in Polymers</em><br>
+                    <strong>ACS Applied Materials & Interfaces</strong>, vol 16, 16853, 2024
+                </p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    <strong>S. Han</strong>, B.G. Lee, D.W. Lim, J. Kim*<br>
+                    <em>Machine learning-based prediction of proton conductivity in metal–organic frameworks</em><br>
+                    <strong>Chemistry of Materials</strong>, vol 36, 11280, 2024
+                </p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    <strong>S. Han</strong>, Y. Lee, J. Kim, S.Y. Cho*<br>
+                    <em>Physicochemical Profiling of Macrophage Heterogeneity Using Deep Learning Integrated Nanosensor Cytometry</em><br>
+                    <strong>ACS Sensors</strong>, vol. 8, 1676, 2023
+                </p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    <strong>S. Han#</strong>, J. Lee#, J. Kim*<br>
+                    <em>Experimental X-ray Diffraction Integrated Transformer</em><br>
+                    <strong>In preparation</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

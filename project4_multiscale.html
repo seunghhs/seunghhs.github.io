@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiscale Simulation | Seunghee Han</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pastel-green: #a8e6cf;
+            --pastel-green-dark: #7fcdbb;
+            --pastel-pink: #ffd3d3;
+            --pastel-pink-dark: #ffb6b6;
+            --pastel-blue: #c7e9ff;
+            --pastel-blue-dark: #a6d8f4;
+            --pastel-purple: #e0c3fc;
+            --pastel-yellow: #fff3b8;
+
+            --gradient-research: linear-gradient(135deg, #fff3b8 0%, #ffd3d3 100%);
+            --font-heading: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--pastel-pink-dark);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        .project-header {
+            background: var(--gradient-research);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .content-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--pastel-pink-dark);
+        }
+
+        .content-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-badge {
+            background: var(--pastel-yellow);
+            color: var(--text-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--pastel-pink);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            margin-right: 1rem;
+        }
+
+        .publication-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 211, 211, 0.4);
+        }
+
+        .highlight-box {
+            background: var(--pastel-blue);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--pastel-pink-dark);
+            margin: 1.5rem 0;
+        }
+
+        .methodology-list {
+            margin-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .methodology-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Main Page</a>
+
+        <div class="project-header">
+            <div class="project-icon">⚛️</div>
+            <h1 class="project-title">Multiscale Simulation</h1>
+            <p class="project-subtitle">DFT & Molecular Dynamics</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Overview</h2>
+            <p class="content-text">
+                This project focuses on elucidating complex behaviors and mechanisms within MOFs, polymers, catalysts,
+                and battery systems through density functional theory (DFT) and molecular dynamics (MD) simulations.
+                By employing multiscale computational approaches, we can understand material properties at the atomic
+                level and predict their macroscopic behavior.
+            </p>
+
+            <div class="tech-stack">
+                <span class="tech-badge">DFT (VASP)</span>
+                <span class="tech-badge">MD (LAMMPS)</span>
+                <span class="tech-badge">RASPA</span>
+                <span class="tech-badge">Gaussian</span>
+                <span class="tech-badge">Materials Studio</span>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">DFT Simulations: Catalyst Surface Reactivity</h2>
+
+            <img src="images/5-1_dft.jpeg" alt="DFT calculations for catalysts" class="project-image">
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
+                Cobalt-Doped Ceria Sensitizer Effects on Metal Oxide Nanofibers
+            </h3>
+
+            <p class="content-text">
+                To support the experimental findings and rationalize the underlying mechanism behind the enhanced sensing
+                properties in Co–CeO₂@SnO₂, we conducted DFT calculations to investigate the adsorption energies and
+                conducted Bader charge analyses.
+            </p>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                Computational Methodology
+            </h3>
+            <p class="content-text">
+                DFT calculations were performed using Vienna Ab initio Simulation Program (VASP) software version 5.4.1.
+                The Perdew–Burke–Ernzerhof (PBE) exchange–correlation functional and projector-augmented wave (PAW)
+                pseudopotentials were utilized in the calculations.
+            </p>
+
+            <ul class="methodology-list">
+                <li>PBE-D3 method of Grimme was used to account for van der Waals interactions</li>
+                <li>Dipole corrections were implemented to alleviate artificial potential gradients</li>
+                <li>CeO₂ surface cleaved to expose the (111) facet</li>
+                <li>9 atomic layers model with a 20 Å vacuum gap perpendicular to the surface</li>
+                <li>Co–CeO₂ surface obtained by substituting one Co atom in the CeO₂ surface</li>
+            </ul>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                Results & Insights
+            </h3>
+            <p class="content-text">
+                Adsorption energies of C₅H₈ on both CeO₂ and Co–CeO₂ surfaces were calculated for different possible
+                configurations. The results revealed that the adsorption energy of C₅H₈ on Co–CeO₂ (−83.5 kJ mol⁻¹)
+                was higher compared to that of CeO₂ (−67.6 kJ mol⁻¹), indicating more favorable adsorption of the
+                target analyte on the Co–CeO₂ surface.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Key Finding:</strong> The charge density difference plot, along with the Bader charge analysis,
+                indicates an increase in the absolute value of charge transfer from 0.0263 e for CeO₂ to 0.0401 e for
+                Co–CeO₂. A larger magnitude of charge transfer in Co-doped CeO₂ would indicate a significant reinforcement
+                in the C₅H₈ adsorption and activation behavior.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Molecular Dynamics: Crosslinking Behavior</h2>
+
+            <img src="images/5-2_lammps.jpg" alt="MD simulations with LAMMPS" class="project-image">
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
+                Investigating Crosslinker Chain Length Effects
+            </h3>
+
+            <p class="content-text">
+                We performed molecular dynamics (MD) simulations to investigate the effect of crosslinker chain length
+                on the crosslinking behavior. In the model, two parallel planes positioned along the top and bottom
+                represented the surfaces of two different perovskite nanocrystals (PeNCs), with only surface-bound
+                ligands included to simplify the system.
+            </p>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                Simulation Approach
+            </h3>
+            <p class="content-text">
+                To mimic the bound state, the terminal oxygen atom of each ligand was fixed in space. Dithiol crosslinkers
+                were randomly distributed in the space between the two surfaces. To model bond formation, we assumed that
+                an irreversible bond would form during the MD simulation whenever a sulfur atom from a crosslinker approached
+                within a defined cutoff distance of a C═C bond in a surface ligand.
+            </p>
+
+            <p class="content-text">
+                This was implemented using a distance-based bond formation algorithm, which has been previously applied
+                to simulate self-assembly processes. After the simulations, we classified the total crosslinking (n<sub>total</sub>)
+                into two types:
+            </p>
+
+            <ul class="methodology-list">
+                <li><strong>Interparticle crosslinking (external, n<sub>ext</sub>)</strong> - contributes to solubility change</li>
+                <li><strong>Internal crosslinking (n<sub>int</sub>)</strong> - does not contribute to solubility change</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Key Results:</strong> HDT, with a sulfur-to-sulfur distance of 0.95 nm, showed a low crosslinking
+                efficiency of 0.167. In contrast, longer-chain crosslinkers such as ODT (1.19 nm) and DDT (1.23 nm)
+                exhibited higher crosslinking efficiencies of 0.357 and 0.64, respectively.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Monte Carlo Simulations: MOF Adsorption</h2>
+
+            <img src="images/5-3_raspa.jpg" alt="RASPA simulations for MOFs" class="project-image">
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
+                Hydrogen-Bonding Networks in Flexible MOFs
+            </h3>
+
+            <p class="content-text">
+                To further confirm the relationship between pore size and imidazole-mediated hydrogen-bonding networks,
+                molecular simulations were used to populate the imidazole and water molecules inside the pores of
+                Im@MIL-88B-SB and Im@MIL-88B-LB.
+            </p>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                Grand Canonical Monte Carlo (GCMC) Simulations
+            </h3>
+            <p class="content-text">
+                The amount of introduced imidazole molecules through the Grand Canonical Monte Carlo simulation is
+                3.52 and 9.81 per Fe clusters for Im@MIL-88B-SB and Im@MIL-88B-LB, respectively.
+            </p>
+
+            <p class="content-text">
+                The imidazole molecules in Im@MIL-88B-SB are found near the vicinity of the metal clusters while the
+                relatively empty space is observed around the linker, forming isolated clusters due to the small pore
+                size. However, in Im@MIL-88B-LB, imidazole is evenly distributed within the pore, with the continuous
+                hydrogen-bonding networks being formed.
+            </p>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                NVT Simulations: Water-Imidazole Interactions
+            </h3>
+            <p class="content-text">
+                Next, the water–imidazole adsorption behaviors in Im@MIL-88B-SB and Im@MIL-88B-LB were obtained through
+                the NVT simulations, in which the number of adsorbed water molecules was set to be in accordance with
+                the experimental results.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Key Finding:</strong> Imidazole and water molecules are continuously mixed in Im@MIL-88B-LB,
+                contributing to efficient hydrogen-bonding networks. The enhanced coordination numbers of atom pairs
+                between different chemical constituents in Im@MIL-88B-LB indicate the mixed and continuous configurations
+                of proton carriers. The hydrogen-bonding numbers for each atom of proton carriers in Im@MIL-88B-LB are
+                increased to more than one, contributing to the formation of continuous hydrogen-bonding networks.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Related Publications</h2>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    J.W. Baek, <strong>S. Han</strong>, S.E. Lee, J. Ahn, C. Park, J. S. Nam, Y. H. Kim, E. Shin, M. Kim,
+                    J. S. Jang, J. Kim, H. J. Park*, I. D. Kim*<br>
+                    <em>Cobalt-doped ceria sensitizer effects on metal oxide nanofibers: heightened surface reactivity for
+                    high-performing chemiresistive sensors</em><br>
+                    <strong>ACS Nano</strong>, vol 18, 19568, 2024
+                </p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    S. Maeng#, J. Kim#, T. Kim#, S. Lee, <strong>S. Han</strong>, S. J. Park, C. Kim, J. Kim, Y. Lee*, H. Cho*<br>
+                    <em>Dual‐Strategy Direct Photocatalytic Patterning for Efficient Perovskite Nanocrystal LED Displays</em><br>
+                    <strong>Advanced Materials</strong>, e08217, 2025
+                </p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    N.H. Kwon, <strong>S. Han</strong>, J. Kim, E.S. Cho*<br>
+                    <em>Super Proton Conductivity Through Control of Hydrogen-Bonding Networks in Flexible Metal–Organic Frameworks</em><br>
+                    <strong>Small</strong>, 2301122, 2023
+                </p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    H. K. Lee#, Y. Oruganti#, J. Lee#, <strong>S. Han</strong>, J. Kim, D. Moon, M. Kim, D.W. Lim*, H. R. Moon*<br>
+                    <em>Moisture-triggered proton conductivity switching in metal-organic frameworks: role of coordinating solvents</em><br>
+                    <strong>Journal of Materials Chemistry A</strong>, vol. 12, 795-801, 2023
+                </p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p class="content-text">
+                    S. Lee, J. Park, <strong>S. Han</strong>, E. S. Yu, J. Kim, C. Hwang, D. S. Lee, K. H. Jeong*<br>
+                    <em>Superhydrophilic Silica-Coated Au Nanoislands for Efficient Capture and Enhanced SERS Detection of
+                    Airborne Biomarkers</em><br>
+                    <strong>ACS Applied Materials & Interfaces</strong>, 2025 (Accepted)
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
