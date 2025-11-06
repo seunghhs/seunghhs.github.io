@@ -205,6 +205,72 @@
         </div>
 
         <div class="content-section">
+            <h2 class="section-title">EGMOF</h2>
+
+            <img src="images/egmof.jpg" alt="EGMOF Framework" class="project-image">
+
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
+                EGMOF: Efficient Generation of Metal-Organic Frameworks for Enhanced Property Targeting
+            </h3>
+
+            <p class="content-text">
+                Designing materials with targeted properties remains challenging due to the vastness of chemical space
+                and the scarcity of property-labeled data. While recent advances in generative models offer a promising
+                way for inverse design, most approaches require large datasets and must be retrained for every new target
+                property.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Key Innovation:</strong> EGMOF is a hybrid diffusion-transformer framework that overcomes these
+                limitations through a modular, descriptor-mediated workflow.
+            </div>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                Modular Architecture
+            </h3>
+            <p class="content-text">
+                EGMOF decomposes inverse design into two steps:
+            </p>
+            <ul class="methodology-list">
+                <li><strong>Prop2Desc:</strong> A one-dimensional diffusion model that maps desired properties to chemically meaningful descriptors</li>
+                <li><strong>Desc2MOF:</strong> A transformer model that generates structures from these descriptors</li>
+            </ul>
+            <p class="content-text">
+                This modular hybrid design enables minimal retraining and maintains high accuracy even under small-data conditions.
+            </p>
+
+            <h3 style="color: var(--text-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+                Performance & Results
+            </h3>
+            <p class="content-text">
+                On a hydrogen uptake dataset, EGMOF achieved over <strong>95% validity</strong> and <strong>84% hit rate</strong>,
+                representing significant improvements of up to 57% in validity and 14% in hit rate compared to existing methods,
+                while remaining effective with only 1,000 training samples.
+            </p>
+
+            <p class="content-text">
+                Moreover, our model successfully performed conditional generation across <strong>29 diverse property datasets</strong>,
+                including CoREMOF, QMOF, and text-mined experimental datasets, whereas previous models have not.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Impact:</strong> This work presents a data-efficient, generalizable approach to the inverse design
+                of diverse MOFs and highlights the potential of modular inverse design workflows for broader materials discovery.
+            </div>
+
+            <div class="tech-stack">
+                <span class="tech-badge">Diffusion Model</span>
+                <span class="tech-badge">Transformer</span>
+                <span class="tech-badge">RASPA</span>
+                <span class="tech-badge">Materials Studio</span>
+            </div>
+
+            <p class="content-text" style="font-style: italic; margin-top: 1.5rem;">
+                This research is currently in preparation for publication.
+            </p>
+        </div>
+
+        <div class="content-section">
             <h2 class="section-title">Research Highlight: Inorganic Crystal Generation</h2>
 
             <img src="images/3-1_inorganic.jpeg" alt="Inorganic Crystal Generation with Diffusion Model" class="project-image">
@@ -259,32 +325,6 @@
             <a href="https://pubs.acs.org/doi/10.1021/acs.jcim.3c01142" class="publication-link" target="_blank">
                 View Publication →
             </a>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">Ongoing Research: MOF Generation with EGMOF</h2>
-
-            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 1rem;">
-                EGMOF: Efficient Generation of Metal-Organic Frameworks for Enhanced Property Targeting
-            </h3>
-
-            <p class="content-text">
-                Building upon our success with inorganic crystal generation, we are developing a diffusion-transformer
-                model specifically designed for Metal-Organic Frameworks (MOFs). This work combines the strengths of
-                diffusion models and transformer architectures to enable efficient generation of MOF structures with
-                targeted properties.
-            </p>
-
-            <div class="tech-stack">
-                <span class="tech-badge">Diffusion Model</span>
-                <span class="tech-badge">Transformer</span>
-                <span class="tech-badge">RASPA</span>
-                <span class="tech-badge">Materials Studio</span>
-            </div>
-
-            <p class="content-text" style="font-style: italic; margin-top: 1.5rem;">
-                This research is currently in preparation for publication.
-            </p>
         </div>
 
         <div class="content-section">
